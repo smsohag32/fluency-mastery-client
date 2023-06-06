@@ -1,14 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { toast } from "react-toastify";
+import IconSpin from "../../components/Spinner/IconSpin";
 
 const Register = () => {
-  const { userCreate } = useAuth();
-  const [singUpError, setSingUpError] = useState("");
+  const { createUser, logOut, updateUserInfo, loading, setLoading } = useAuth();
+  const [registerError, setRegisterError] = useState("");
+  const navigate = useNavigate();
 
   //   react hook form
   const {
@@ -21,7 +23,34 @@ const Register = () => {
   // handle login
   const onSubmit = (data) => {
     console.log(data);
-    toast.success("clickt");
+    const name = data.name;
+    const email = data.email;
+    const password = data.password;
+    const photo = data.photo;
+
+    // create a user
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        if (user) {
+          updateUserInfo(name, photo)
+            .then(() => {
+              toast.success(`${name} your account create successful`);
+              logOut();
+              reset();
+              navigate("/login");
+            })
+            .catch((err) => {
+              setLoading(false);
+            });
+        }
+      })
+      .catch((err) => {
+        if (err.message.includes("already")) {
+          setRegisterError("Your already have a account please Login");
+          setLoading(false);
+        }
+      });
   };
 
   return (
@@ -86,9 +115,9 @@ const Register = () => {
                   className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                   autoFocus
                 />
-                {errors?.password && (
+                {errors?.photo && (
                   <span className="text-red-600 text-sm">
-                    <small>{errors.password?.message}</small>
+                    <small>{errors.photo?.message}</small>
                   </span>
                 )}
               </div>
@@ -97,34 +126,43 @@ const Register = () => {
                 <label className="block text-gray-700">Password</label>
                 <input
                   {...register("password", {
-                    required: true,
+                    required: "This field is required* ",
                   })}
                   type="password"
                   name="password"
                   placeholder="Enter Password"
-                  minLength="6"
                   className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
                 />
+                {errors?.email && (
+                  <span className="text-red-600 text-sm">
+                    <small>{errors.password?.message}</small>
+                  </span>
+                )}
               </div>
               <div className="mt-4">
                 <label className="block text-gray-700">Confirm Password</label>
                 <input
                   {...register("confirm", {
-                    required: true,
+                    required: "This field is required",
                   })}
-                  type="confirm"
-                  name="password"
+                  type="password"
+                  name="confirm"
                   placeholder="Enter Confirm Password"
                   className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
                 />
+                {errors?.email && (
+                  <span className="text-red-600 text-sm">
+                    <small>{errors.confirm?.message}</small>
+                  </span>
+                )}
               </div>
 
-              {singUpError && (
+              {registerError && (
                 <div className="text-center mt-2">
                   <span className="text-sm font-semibold text-red-500 ">
-                    {singUpError}
+                    {registerError}
                   </span>
                 </div>
               )}
@@ -134,7 +172,7 @@ const Register = () => {
                 className="w-full block btn-accent  focus: text-white font-semibold rounded-lg
               px-4 py-3 mt-6"
               >
-                Sing up
+                {loading ? <IconSpin /> : "Register"}
               </button>
             </form>
 
