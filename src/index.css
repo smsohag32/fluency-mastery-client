@@ -16,4 +16,6 @@ html{
 .default-container{
   @apply w-full max-w-[1280px] mx-auto
 }
-
+.custom-bg{
+  @apply bg-[#444654]
+}

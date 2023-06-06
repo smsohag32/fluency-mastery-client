@@ -3,8 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 const Header = () => {
   const user = false;
   return (
-    <div>
-      <div className="navbar default-container bg-base-100">
+    <div className="custom-bg fixed top-0 backdrop-blur-2xl z-20 left-0 right-0">
+      <div className="navbar default-container">
         <div className="flex-1">
           <Link to="/">FluencyMastery</Link>
         </div>
