@@ -61,6 +61,7 @@ const AuthProvider = ({ children }) => {
     userLogout,
     updateProfileInfo,
     loading,
+    setLoading,
   };
   //   observer
   useEffect(() => {

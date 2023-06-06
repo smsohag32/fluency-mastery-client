@@ -5,9 +5,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { useAuth } from "../../hooks/useAuth";
+import { toast } from "react-toastify";
+import IconSpin from "../../components/Spinner/IconSpin";
 
 const Login = () => {
-  const { userLogin } = useAuth();
+  const { userLogin, loading, setLoading } = useAuth();
   const { loginError, setLoginError } = useState("");
 
   const navigate = useNavigate();
@@ -24,8 +26,26 @@ const Login = () => {
 
   // handle login
   const onSubmit = (data) => {
+    setLoginError("");
+
     const email = data.email;
     const password = data.password;
+
+    // user login
+    userLogin(email, password)
+      .then((result) => {
+        toast.success("Login Successfully");
+        reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setLoading(false);
+        if (error.message.includes("not-found")) {
+          setLoginError("Account not found! Please Sing up now.");
+        } else if (error.message.includes("wrong")) {
+          setLoginError("Password is not correct.");
+        }
+      });
   };
 
   return (
@@ -58,39 +78,53 @@ const Login = () => {
                 <label className="block text-gray-700">Email Address</label>
                 <input
                   {...register("email", {
-                    required: true,
+                    required: "This Field is required *",
                   })}
                   type="email"
                   name="email"
                   placeholder="Enter Email Address"
                   className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-                  autoFocus
                 />
+                {errors?.email && (
+                  <span className="text-red-600 text-sm">
+                    <small>{errors.email?.message}</small>
+                  </span>
+                )}
               </div>
 
               <div className="mt-4">
                 <label className="block text-gray-700">Password</label>
                 <input
                   {...register("password", {
-                    required: true,
+                    required: "This field is required",
                   })}
                   type="password"
                   name="password"
                   placeholder="Enter Password"
-                  minLength="6"
                   className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
                 />
+                {errors?.password && (
+                  <span className="text-red-600 text-sm">
+                    <small>{errors.password?.message}</small>
+                  </span>
+                )}
               </div>
               <button
                 type="submit"
                 className="w-full block btn-accent  focus: text-white font-semibold rounded-lg
               px-4 py-3 mt-6"
               >
-                Log In
+                {loading ? <IconSpin /> : "Login"}
               </button>
             </form>
-
+            {loginError && (
+              <div className="text-center text-orange-700 mt-4">
+                <p>
+                  <small>{loginError}</small>
+                </p>
+              </div>
+            )}
             <hr className="my-6 border-gray-300 w-full" />
 
             <SocialLogin />
