@@ -40,7 +40,7 @@ const Login = () => {
         </div>
 
         <div
-          className="bg-white w-full md:max-w-md  lg:max-w-full md:mx-auto  h-full px-6 lg:px-16 xl:px-12
+          className="bg-white w-full md:max-w-md md:w-5/6  lg:max-w-full md:mx-auto  h-full px-6 lg:px-16 xl:px-12
         flex items-center justify-center"
         >
           <div className="w-full h-100">
@@ -95,11 +95,11 @@ const Login = () => {
 
             <SocialLogin />
 
-            <p className="mt-8">
+            <p className="mt-8 text-black">
               Need an account?
               <Link
                 to="/register"
-                className="text-blue-500 hover:text-blue-700 font-semibold"
+                className="text-blue-500 ms-2 hover:text-blue-700 font-semibold"
               >
                 Create an account
               </Link>
