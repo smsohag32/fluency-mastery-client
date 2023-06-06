@@ -1,12 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
-
+import { useState } from "react";
+import { Sling } from "hamburger-react";
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const user = false;
   return (
     <div className="custom-bg fixed top-0 backdrop-blur-2xl z-20 left-0 right-0">
       <div className="navbar default-container">
         <div className="flex-1">
           <Link to="/">FluencyMastery</Link>
+          <div>
+            <Sling toggled={isOpen} toggle={setIsOpen} />
+          </div>
         </div>
         <ul className="flex gap-5 md:mr-10">
           <li>
