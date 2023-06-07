@@ -1,6 +1,6 @@
 const CoursesCard = ({ courseInfo }) => {
   return (
-    <div className="shadow-xl w-96 border-b-2 rounded-xl group duration-1000 overflow-hidden">
+    <div className="shadow-xl w-full border-b-2 rounded-xl group duration-1000 overflow-hidden">
       <div className="card w-full h-full">
         <div className="relative min-h-[40%]  object-contain overflow-hidden bg-cover bg-no-repeat">
           <img

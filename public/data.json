@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "1",
+    "image": "https://img.freepik.com/free-vector/teacher-standing-near-blackboard-holding-stick-isolated-flat-vector-illustration-cartoon-woman-character-near-chalkboard-pointing-alphabet_74855-8600.jpg?w=740&t=st=1686158435~exp=1686159035~hmac=a4d8c6e8f14ab4f02aef107877c23f0f3727f01baa045c7ce3a328b7f2566b0f",
+    "name": "English Fluency Mastery",
+    "instructor_name": "John Smith",
+    "available seats": 20,
+    "price": 99.99
+  },
+  {
+    "_id": "2",
+    "image": "https://img.freepik.com/free-vector/teacher-standing-near-blackboard-holding-stick-isolated-flat-vector-illustration-cartoon-woman-character-near-chalkboard-pointing-alphabet_74855-8600.jpg?w=740&t=st=1686158435~exp=1686159035~hmac=a4d8c6e8f14ab4f02aef107877c23f0f3727f01baa045c7ce3a328b7f2566b0f",
+    "name": "Spanish Language Proficiency",
+    "instructor_name": "Maria Garcia",
+    "available seats": 15,
+    "price": 79.99
+  },
+  {
+    "_id": "3",
+    "image": "https://img.freepik.com/free-vector/teacher-standing-near-blackboard-holding-stick-isolated-flat-vector-illustration-cartoon-woman-character-near-chalkboard-pointing-alphabet_74855-8600.jpg?w=740&t=st=1686158435~exp=1686159035~hmac=a4d8c6e8f14ab4f02aef107877c23f0f3727f01baa045c7ce3a328b7f2566b0f",
+    "name": "French Fluency Bootcamp",
+    "instructor_name": "Jean-Luc Martin",
+    "available seats": 10,
+    "price": 109.99
+  },
+  {
+    "_id": "4",
+    "image": "https://img.freepik.com/free-vector/teacher-standing-near-blackboard-holding-stick-isolated-flat-vector-illustration-cartoon-woman-character-near-chalkboard-pointing-alphabet_74855-8600.jpg?w=740&t=st=1686158435~exp=1686159035~hmac=a4d8c6e8f14ab4f02aef107877c23f0f3727f01baa045c7ce3a328b7f2566b0f",
+    "name": "German Language Masterclass",
+    "instructor_name": "Hans Mueller",
+    "available seats": 25,
+    "price": 89.99
+  }
+]

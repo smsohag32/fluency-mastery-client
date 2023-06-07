@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import axios from "axios";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -67,7 +68,22 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (loggedUser) => {
       setUser(loggedUser);
-      setLoading(false);
+      if (loggedUser?.email) {
+        axios
+          .post(`${import.meta.env.VITE_API_LINK}/jwt`, {
+            email: loggedUser.email,
+          })
+          .then((res) => {
+            localStorage.setItem("access-token", res?.data?.token);
+            setLoading(false);
+          })
+          .catch((err) => {
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
     });
 
     // unmount

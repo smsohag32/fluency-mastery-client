@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 import IconSpin from "../../components/Spinner/IconSpin";
 import registerImage from "../../assets/login/register.svg";
 const Register = () => {
-  const { createUser, logOut, updateUserInfo, loading, setLoading } = useAuth();
+  const { createUser, userLogout, updateProfileInfo, loading, setLoading } =
+    useAuth();
   const [registerError, setRegisterError] = useState("");
   const navigate = useNavigate();
 
@@ -32,18 +33,17 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        if (user) {
-          updateUserInfo(name, photo)
-            .then(() => {
-              toast.success(`${name} your account create successful`);
-              logOut();
-              reset();
-              navigate("/login");
-            })
-            .catch((err) => {
-              setLoading(false);
-            });
-        }
+        updateProfileInfo(name, photo)
+          .then(() => {
+            userLogout();
+            navigate("/login");
+            toast.success(`${name} your account create successful`);
+
+            reset();
+          })
+          .catch((err) => {
+            setLoading(false);
+          });
       })
       .catch((err) => {
         if (err.message.includes("already")) {
