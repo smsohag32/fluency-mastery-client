@@ -1,9 +1,12 @@
 import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "../../hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
   const { googleLogin, updateProfileInfo, setLoading } = useAuth();
-
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   //   handle google login
   const handleGoogleLogin = () => {
     googleLogin()
@@ -11,7 +14,9 @@ const SocialLogin = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         updateProfileInfo(loggedUser.displayName, loggedUser.photoURL)
-          .then((result) => {})
+          .then((result) => {
+            navigate(from, { replace: true });
+          })
           .then((err) => setLoading(false));
         setLoading(false);
       })

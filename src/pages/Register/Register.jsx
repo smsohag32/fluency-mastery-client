@@ -6,7 +6,7 @@ import { useAuth } from "../../hooks/useAuth";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { toast } from "react-toastify";
 import IconSpin from "../../components/Spinner/IconSpin";
-
+import registerImage from "../../assets/login/register.svg";
 const Register = () => {
   const { createUser, logOut, updateUserInfo, loading, setLoading } = useAuth();
   const [registerError, setRegisterError] = useState("");
@@ -55,8 +55,10 @@ const Register = () => {
 
   return (
     <div className="bg-white py-12">
-      <section className="flex flex-col md:flex-row  items-center">
-        <div className="bg-indigo-600 h-full  hidden lg:block w-full "></div>
+      <section className="flex default-container flex-col md:flex-row  items-center">
+        <div className=" h-full  hidden lg:block w-full ">
+          <img src={registerImage} alt="Register" />
+        </div>
 
         <div
           className="bg-white md:max-w-md lg:max-w-full md:w-5/6 mx-auto w-full px-6 lg:px-16 xl:px-12

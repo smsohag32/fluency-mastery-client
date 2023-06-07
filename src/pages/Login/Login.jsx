@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import bg from "../../assets/bg/line.svg";
+import loginImage from "../../assets/login/login.svg";
+
 import { useState } from "react";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { useAuth } from "../../hooks/useAuth";
@@ -51,10 +52,10 @@ const Login = () => {
   return (
     <div className=" bg-white py-12">
       <section className="flex flex-col default-container md:flex-row min-h-[50vh] items-center">
-        <div className="bg-indigo-600 hidden lg:block w-full h-full">
+        <div className=" hidden lg:block w-full h-full">
           <img
-            src="https://img.freepik.com/free-vector/hand-drawn-teacher-s-day-background-spanish_23-2149368586.jpg?w=740&t=st=1686143952~exp=1686144552~hmac=95b53e4105d5ec0cc92e39f1cafe242bf214155c96ae54a9ea13a9ec5a65fd1a"
-            alt=""
+            src={loginImage}
+            alt="Login"
             className="w-full h-full object-cover"
           />
         </div>
