@@ -2,14 +2,21 @@ import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "../../hooks/useAuth";
 
 const SocialLogin = () => {
-  const { googleLogin } = useAuth();
+  const { googleLogin, updateProfileInfo, setLoading } = useAuth();
 
   //   handle google login
   const handleGoogleLogin = () => {
     googleLogin()
-      .then()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateProfileInfo(loggedUser.displayName, loggedUser.photoURL)
+          .then((result) => {})
+          .then((err) => setLoading(false));
+        setLoading(false);
+      })
       .catch((error) => {
-        console.log(error);
+        setLoading(false);
       });
   };
   return (

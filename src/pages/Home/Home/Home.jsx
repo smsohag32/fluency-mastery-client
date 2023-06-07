@@ -1,4 +1,5 @@
 import HeaderBanner from "../../../components/Banner/HeaderBanner/HeaderBanner";
+import PopularInstructors from "../Popular Instructors/PopularInstructors";
 import PopularClasses from "../PopularClasses/PopularClasses";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <HeaderBanner />
       <PopularClasses />
+      <PopularInstructors />
     </div>
   );
 };

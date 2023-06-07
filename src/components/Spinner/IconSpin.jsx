@@ -1,7 +1,11 @@
 import { FaSpinner } from "react-icons/fa";
 
 const IconSpin = () => {
-  return <FaSpinner size={30} />;
+  return (
+    <div className="w-full h-auto flex items-center justify-center">
+      <FaSpinner size={30} className="animate-spin" />
+    </div>
+  );
 };
 
 export default IconSpin;

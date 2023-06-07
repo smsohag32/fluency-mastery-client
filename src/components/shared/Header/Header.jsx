@@ -1,9 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Sling } from "hamburger-react";
+import { useAuth } from "../../../hooks/useAuth";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const user = false;
+  const { user, userLogout } = useAuth();
+
+  // handle log out
+  const handleLogout = () => {
+    userLogout();
+  };
   return (
     <div className="custom-bg  fixed top-0 backdrop-blur-2xl z-20 left-0 right-0">
       <div className="navbar relative default-container">
@@ -61,7 +67,12 @@ const Header = () => {
                   <a>Settings</a>
                 </li>
                 <li>
-                  <button className="btn-accent py-1 px-5">Logout</button>
+                  <button
+                    onClick={handleLogout}
+                    className="btn-accent py-1 px-5"
+                  >
+                    Logout
+                  </button>
                 </li>
               </ul>
             </div>
