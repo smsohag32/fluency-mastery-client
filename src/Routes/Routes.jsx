@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import StudentHome from "../pages/Dashboard/StudentHome/StudentHome";
 
 // all routes
 const routes = createBrowserRouter([
@@ -23,6 +25,16 @@ const routes = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/dashboard/",
+        element: <StudentHome />,
       },
     ],
   },

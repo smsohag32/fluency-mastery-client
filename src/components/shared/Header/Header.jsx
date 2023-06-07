@@ -12,14 +12,15 @@ const Header = () => {
   };
   return (
     <div className="custom-bg  fixed top-0 backdrop-blur-2xl z-20 left-0 right-0">
-      <div className="navbar relative default-container">
+      <div className="navbar relative px-5 default-container">
         <div className="flex-1">
           <Link to="/">FluencyMastery</Link>
-          <div className="md:hidden">
-            <Sling toggled={isOpen} toggle={() => setIsOpen(!isOpen)} />
-          </div>
         </div>
-        <ul className="flex flex-col md:flex-row custom-bg md:bg-transparent top-16 h-[calc(100vh-70px)] left-0 right-2/3 md:h-auto absolute md:static gap-5 md:mr-10">
+        <ul
+          className={`flex flex-col md:flex-row md:bg-transparent md:py-0 top-[82px] duration-500 transform h-[calc(100vh-70px)] left-0 right-2/3 md:h-auto absolute md:static gap-5 md:mr-10 ${
+            isOpen ? "custom-bg py-10 left-0" : "-left-full"
+          }`}
+        >
           <li>
             <NavLink
               to="/"
@@ -44,13 +45,24 @@ const Header = () => {
               Classes
             </NavLink>
           </li>
+          {user?.email && (
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) => (isActive ? "text-primary" : "")}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
         </ul>
+
         {user?.email ? (
-          <div className="flex-none gap-5">
+          <div title={user?.displayName} className="flex-none gap-5">
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                  <img src={user.photoURL} />
                 </div>
               </label>
               <ul
@@ -82,6 +94,9 @@ const Header = () => {
             Login
           </Link>
         )}
+        <div className="md:hidden ms-4">
+          <Sling toggled={isOpen} size={40} toggle={() => setIsOpen(!isOpen)} />
+        </div>
       </div>
     </div>
   );
