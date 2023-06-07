@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import bg from "../../assets/bg/line.svg";
 import { useState } from "react";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { useAuth } from "../../hooks/useAuth";
@@ -53,7 +53,7 @@ const Login = () => {
       <section className="flex flex-col default-container md:flex-row min-h-[50vh] items-center">
         <div className="bg-indigo-600 hidden lg:block w-full h-full">
           <img
-            src="https://images.unsplash.com/photo-1516841273335-e39b37888115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=847&q=80"
+            src="https://img.freepik.com/free-vector/hand-drawn-teacher-s-day-background-spanish_23-2149368586.jpg?w=740&t=st=1686143952~exp=1686144552~hmac=95b53e4105d5ec0cc92e39f1cafe242bf214155c96ae54a9ea13a9ec5a65fd1a"
             alt=""
             className="w-full h-full object-cover"
           />

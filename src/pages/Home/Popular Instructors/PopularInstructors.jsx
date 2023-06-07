@@ -1,3 +1,4 @@
+import InstructorCard from "../../../components/Card/InstructorCard";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const PopularInstructors = () => {
@@ -8,11 +9,9 @@ const PopularInstructors = () => {
         title="Popular Instructors"
         center={false}
       />
-      <div className="default-container">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-        necessitatibus atque voluptatem dignissimos repudiandae neque
-        perferendis repellat illum? Magni, laboriosam temporibus dolorum
-        repudiandae amet id vel reprehenderit sapiente earum quasi?
+      <div className="default-container grid-cols-2 grid gap-12">
+        <InstructorCard />
+        <InstructorCard />
       </div>
     </section>
   );
