@@ -15,6 +15,9 @@ import StSelectedCourses from "../pages/Dashboard/Student/StSelectedCourses/StSe
 import InstAddCourse from "../pages/Dashboard/Instructors/InstAddCourse/InstAddCourse";
 import InstCourses from "../pages/Dashboard/Instructors/InstCourses/InstCourses";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
+import InstructorRoute from "./InstructorRoute";
 
 // all routes
 const routes = createBrowserRouter([
@@ -47,7 +50,11 @@ const routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard/",
@@ -69,7 +76,11 @@ const routes = createBrowserRouter([
       // instructors dashboard routes
       {
         path: "add-courses",
-        element: <InstAddCourse />,
+        element: (
+          <InstructorRoute>
+            <InstAddCourse />
+          </InstructorRoute>
+        ),
       },
       {
         path: "my-courses",
@@ -79,7 +90,11 @@ const routes = createBrowserRouter([
       // admin dashboard routes
       {
         path: "manage-users",
-        element: <ManageUsers />,
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
     ],
   },

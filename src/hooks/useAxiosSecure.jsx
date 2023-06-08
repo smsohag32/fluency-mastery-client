@@ -10,7 +10,7 @@ const axiosSecure = axios.create({
 
 // access token send to server and secure to apis
 const useAxiosSecure = () => {
-  const { userLogout } = useAuth();
+  const { userLogout, setLoading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,6 +30,7 @@ const useAxiosSecure = () => {
           (err.response.status === 401 || err.response.status === 403)
         ) {
           await userLogout();
+          setLoading(false);
           navigate("/login");
         }
         return Promise.reject(err);

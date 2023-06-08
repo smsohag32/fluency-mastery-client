@@ -14,9 +14,12 @@ import {
   MdTerminal,
 } from "react-icons/md";
 import { FaUserShield } from "react-icons/fa";
+import useAdmin from "../hooks/useAdmin";
+import useInstructorRole from "../hooks/useInstructorRole";
 const DashboardLayout = () => {
-  const isInstructor = false;
-  const isAdmin = true;
+  const { isAdmin } = useAdmin();
+  const { isInstructor } = useInstructorRole();
+  console.log(isAdmin, isInstructor);
   const isStudent = false;
   return (
     <div>

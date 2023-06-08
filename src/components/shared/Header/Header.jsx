@@ -2,11 +2,12 @@ import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Sling } from "hamburger-react";
 import { useAuth } from "../../../hooks/useAuth";
-import Spinner from "../../Spinner/Spinner";
+import useAdmin from "../../../hooks/useAdmin";
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, userLogout } = useAuth();
-
+  // const { isAdmin } = useAdmin();
   // handle log out
   const handleLogout = () => {
     userLogout();
