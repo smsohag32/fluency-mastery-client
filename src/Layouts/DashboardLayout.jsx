@@ -1,10 +1,23 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import {
   AiOutlineClose,
+  AiOutlineFileDone,
   AiOutlineLogout,
   AiOutlineMenuFold,
+  AiOutlineSelect,
 } from "react-icons/ai";
+import {
+  MdDashboard,
+  MdOutlinePlaylistAdd,
+  MdPayments,
+  MdPermDataSetting,
+  MdTerminal,
+} from "react-icons/md";
+import { FaUserShield } from "react-icons/fa";
 const DashboardLayout = () => {
+  const isInstructor = false;
+  const isAdmin = false;
+  const isStudent = true;
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -34,12 +47,118 @@ const DashboardLayout = () => {
               </label>
             </div>
             {/* Sidebar content here */}
-            <li>
-              <NavLink to="/dashboard">Dashboard</NavLink>
-            </li>
-            <li>
-              <a>Sidebar Item 2</a>
-            </li>
+            {isStudent && (
+              <>
+                <li>
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      isActive ? "text-xl font-bold text-success" : ""
+                    }
+                  >
+                    <MdDashboard /> Dashboard
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/selected-courses"
+                    className={({ isActive }) =>
+                      isActive ? "text-primary" : ""
+                    }
+                  >
+                    <AiOutlineSelect /> My Selected Courses
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/enrolled-courses"
+                    className={({ isActive }) =>
+                      isActive ? "text-primary" : ""
+                    }
+                  >
+                    <AiOutlineFileDone /> My Enrolled Courses
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/payment-history"
+                    className={({ isActive }) =>
+                      isActive ? "text-primary" : ""
+                    }
+                  >
+                    <MdPayments /> Payment History
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {isInstructor && (
+              <>
+                <li>
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      isActive ? "text-xl font-bold text-success" : ""
+                    }
+                  >
+                    <MdDashboard /> Dashboard
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/add-courses"
+                    className={({ isActive }) =>
+                      isActive ? "text-primary" : ""
+                    }
+                  >
+                    <MdOutlinePlaylistAdd /> Add A Course
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/my-courses"
+                    className={({ isActive }) =>
+                      isActive ? "text-primary" : ""
+                    }
+                  >
+                    <MdTerminal /> My Courses
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {isAdmin && (
+              <>
+                <li>
+                  <NavLink
+                    to="/dashboard/dashboard"
+                    className={({ isActive }) =>
+                      isActive ? "text-xl font-bold text-success" : ""
+                    }
+                  >
+                    <MdDashboard /> Dashboard
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/manage-courses"
+                    className={({ isActive }) =>
+                      isActive ? "text-primary" : ""
+                    }
+                  >
+                    <MdPermDataSetting /> Manage Courses
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/manage-users"
+                    className={({ isActive }) =>
+                      isActive ? "text-primary" : ""
+                    }
+                  >
+                    <FaUserShield /> Manage Users
+                  </NavLink>
+                </li>
+              </>
+            )}
             <div className="flex flex-col gap-5 text-left">
               <hr />
               <Link to="/">Home</Link>
