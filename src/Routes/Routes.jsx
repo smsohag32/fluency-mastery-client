@@ -12,6 +12,8 @@ import StudentHome from "../pages/Dashboard/Student/StudentHome/StudentHome";
 import StEnrolCourses from "../pages/Dashboard/Student/StEnrollCourses/StEnrolCourses";
 import StPaymentHistory from "../pages/Dashboard/Student/PaymentHistory/StPaymentHistory";
 import StSelectedCourses from "../pages/Dashboard/Student/StSelectedCourses/StSelectedCourses";
+import InstAddCourse from "../pages/Dashboard/Instructors/InstAddCourse/InstAddCourse";
+import InstCourses from "../pages/Dashboard/Instructors/InstCourses/InstCourses";
 
 // all routes
 const routes = createBrowserRouter([
@@ -50,6 +52,7 @@ const routes = createBrowserRouter([
         path: "/dashboard/",
         element: <StudentHome />,
       },
+      // student dashboard routes
       {
         path: "selected-courses",
         element: <StSelectedCourses />,
@@ -62,6 +65,18 @@ const routes = createBrowserRouter([
         path: "payment-history",
         element: <StPaymentHistory />,
       },
+      // instructors dashboard routes
+      {
+        path: "add-courses",
+        element: <InstAddCourse />,
+      },
+      {
+        path: "my-courses",
+        element: <InstCourses />,
+      },
+
+      // admin dashboard routes
+      {},
     ],
   },
 ]);
