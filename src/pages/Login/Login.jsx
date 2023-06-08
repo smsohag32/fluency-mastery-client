@@ -10,8 +10,8 @@ import { toast } from "react-toastify";
 import IconSpin from "../../components/Spinner/IconSpin";
 
 const Login = () => {
-  const { userLogin, loading, setLoading } = useAuth();
-  const { loginError, setLoginError } = useState("");
+  const { loginUser, loading, setLoading } = useAuth();
+  const [loginError, setLoginError] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,7 +33,7 @@ const Login = () => {
     const password = data.password;
 
     // user login
-    userLogin(email, password)
+    loginUser(email, password)
       .then((result) => {
         toast.success("Login Successfully");
         reset();
