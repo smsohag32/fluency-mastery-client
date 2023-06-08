@@ -22,7 +22,7 @@ const CoursesCard = ({ courseInfo }) => {
             <p className="text-xs">Review</p>
           </div>
           <div className="w-full mt-6 flex justify-end">
-            <button className="btn btn-primary">Enroll Now</button>
+            <button className="btn btn-sm btn-primary">Enroll Now</button>
           </div>
         </div>
       </div>

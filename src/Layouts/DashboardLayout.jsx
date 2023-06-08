@@ -16,8 +16,8 @@ import {
 import { FaUserShield } from "react-icons/fa";
 const DashboardLayout = () => {
   const isInstructor = false;
-  const isAdmin = false;
-  const isStudent = true;
+  const isAdmin = true;
+  const isStudent = false;
   return (
     <div>
       <div className="drawer lg:drawer-open">

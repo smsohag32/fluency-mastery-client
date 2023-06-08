@@ -16,7 +16,7 @@ const InstructorCard = ({ instructor, setHeight }) => {
         <h1 className="font-bold text-xl">Name sheik</h1>
         <p className="secondary-text">sohagsheik@gmail.com</p>
         <p className="secondary-text">lorem</p>
-        <button className="btn btn-secondary">Contact</button>
+        <button className="btn btn-secondary btn-sm">Contact</button>
       </div>
     </div>
   );
