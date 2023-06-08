@@ -9,7 +9,7 @@ const PopularInstructors = () => {
         title="Popular Instructors"
         center={false}
       />
-      <div className="default-container grid-cols-2 grid gap-12">
+      <div className="default-container px-6 md:px-0 grid-cols-1 md:grid-cols-2 grid gap-12">
         <InstructorCard />
         <InstructorCard />
       </div>

@@ -1,6 +1,10 @@
-const InstructorCard = () => {
+const InstructorCard = ({ instructor, setHeight }) => {
   return (
-    <div className="hover:scale-y-105 duration-500 transform gap-8 border-x-2 w-full flex h-full items-center">
+    <div
+      className={`hover:scale-y-105 duration-500 transform gap-2 border-x-2 w-full flex items-center ${
+        setHeight ? setHeight : "h-full"
+      }`}
+    >
       <div className="h-full w-full">
         <img
           className="h-full w-full"
@@ -8,11 +12,11 @@ const InstructorCard = () => {
           alt="doctor"
         />
       </div>
-      <div className="w-full space-y-3 p-5 mb-5">
+      <div className="w-full space-y-3 text-end p-5 mb-5">
         <h1 className="font-bold text-xl">Name sheik</h1>
-        <p className="secondary-text">Classes</p>
+        <p className="secondary-text">sohagsheik@gmail.com</p>
         <p className="secondary-text">lorem</p>
-        <button className="btn btn-secondary">Read More</button>
+        <button className="btn btn-secondary">Contact</button>
       </div>
     </div>
   );

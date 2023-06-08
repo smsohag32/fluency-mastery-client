@@ -68,16 +68,18 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (loggedUser) => {
       setUser(loggedUser);
+
       if (loggedUser?.email) {
         axios
-          .post(`${import.meta.env.VITE_API_LINK}/jwt`, {
+          .post("http://localhost:5000/jwt", {
             email: loggedUser.email,
           })
-          .then((res) => {
-            localStorage.setItem("access-token", res?.data?.token);
+          .then((data) => {
+            localStorage.setItem("access-token", data.data.token);
             setLoading(false);
           })
           .catch((err) => {
+            console.log(err);
             setLoading(false);
           });
       } else {

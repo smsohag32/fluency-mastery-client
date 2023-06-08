@@ -7,6 +7,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import StudentHome from "../pages/Dashboard/StudentHome/StudentHome";
 import Courses from "../pages/Courses/Courses/Courses";
+import Instructors from "../pages/Instructors/Instructors";
 
 // all routes
 const routes = createBrowserRouter([
@@ -30,6 +31,10 @@ const routes = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses />,
+      },
+      {
+        path: "/instructors",
+        element: <Instructors />,
       },
     ],
   },

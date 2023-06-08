@@ -7,6 +7,7 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { toast } from "react-toastify";
 import IconSpin from "../../components/Spinner/IconSpin";
 import registerImage from "../../assets/login/register.svg";
+import saveUser from "../../apis/users";
 const Register = () => {
   const { createUser, userLogout, updateProfileInfo, loading, setLoading } =
     useAuth();
@@ -35,6 +36,7 @@ const Register = () => {
         const user = result.user;
         updateProfileInfo(name, photo)
           .then(() => {
+            saveUser(user);
             userLogout();
             navigate("/login");
             toast.success(`${name} your account create successful`);
