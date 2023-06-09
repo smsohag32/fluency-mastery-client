@@ -4,9 +4,10 @@ const CourseTr = ({
   handleFeedback,
   handleDenied,
   handleApprove,
+  setIsOpen,
 }) => {
   return (
-    <tr>
+    <tr className="text-xs">
       <td>{index + 1}</td>
       <td>
         {course?.course_image ? (
@@ -23,8 +24,8 @@ const CourseTr = ({
       <td>{course?.instructor_name}</td>
       <td className="text-xs">{course?.instructor_email}</td>
       <td>{course?.instructor_available_seats || 0}</td>
-      <td>{course?.price || 0}</td>
-      <td>{course?.status || "pending"}</td>
+      <td>$ {course?.price || 0}</td>
+      <td className="font-bold">{course?.status || "pending"}</td>
 
       <td>
         <div className="flex flex-col gap-2">
@@ -41,7 +42,9 @@ const CourseTr = ({
             Deny
           </button>
           <button
-            onClick={() => handleFeedback(course?._id)}
+            onClick={() => {
+              setIsOpen(true), handleFeedback(course);
+            }}
             className="btn btn-xs btn-info"
           >
             Feedback
