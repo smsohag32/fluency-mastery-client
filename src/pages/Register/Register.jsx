@@ -73,7 +73,7 @@ const Register = () => {
 
             <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
               <div>
-                <label className="block text-gray-700">Name</label>
+                <label className="block text-gray-900">Name</label>
                 <input
                   {...register("name", {
                     required: "This field is required*",
@@ -81,7 +81,7 @@ const Register = () => {
                   type="text"
                   name="name"
                   placeholder="Enter Your Name"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 text-slate-700 focus:bg-white focus:outline-none"
                 />
                 {errors?.name && (
                   <span className="text-red-600 text-sm">
@@ -98,7 +98,7 @@ const Register = () => {
                   type="email"
                   name="email"
                   placeholder="Enter Email Address"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg text-slate-700  bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                   autoFocus
                 />
                 {errors?.email && (
@@ -116,7 +116,7 @@ const Register = () => {
                   type="url"
                   name="photo"
                   placeholder="Enter Photo url"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                  className="w-full px-4 py-3 text-slate-700  rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                   autoFocus
                 />
                 {errors?.photo && (
@@ -135,7 +135,7 @@ const Register = () => {
                   type="password"
                   name="password"
                   placeholder="Enter Password"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                  className="w-full px-4 py-3 text-slate-700  rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
                 />
                 {errors?.email && (
@@ -153,7 +153,7 @@ const Register = () => {
                   type="password"
                   name="confirm"
                   placeholder="Enter Confirm Password"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                  className="w-full px-4 py-3 rounded-lg text-slate-700  bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
                 />
                 {errors?.email && (
