@@ -6,7 +6,7 @@ import PageTitle from "../../../../components/PageTitle/PageTitle";
 import { Link } from "react-router-dom";
 
 const InstCourses = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
   const { axiosSecure } = useAxiosSecure();
 
@@ -16,6 +16,7 @@ const InstCourses = () => {
     refetch,
   } = useQuery({
     queryKey: ["courses"],
+    enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/courses/${user.email}`);
       return res.data;

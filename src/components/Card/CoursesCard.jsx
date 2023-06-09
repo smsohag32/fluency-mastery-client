@@ -1,4 +1,6 @@
-const CoursesCard = ({ courseInfo }) => {
+import { Link } from "react-router-dom";
+
+const CoursesCard = ({ courseInfo, handleCart }) => {
   return (
     <div className="shadow-xl w-full border-b-2 rounded-xl group duration-1000 overflow-hidden">
       <div className="card w-full h-full">
@@ -19,10 +21,19 @@ const CoursesCard = ({ courseInfo }) => {
             </h1>
           </div>
           <div className="flex items-center justify-between">
-            <p className="text-xs">Review</p>
+            <p className="text-xs">
+              Available Seats : {courseInfo?.available_seats}
+            </p>
           </div>
           <div className="w-full mt-6 flex justify-end">
-            <button className="btn btn-sm btn-primary">Enroll Now</button>
+            <Link to={`/dashboard/payment/${courseInfo?._id}`}>
+              <button
+                onClick={() => handleCart(courseInfo)}
+                className="btn btn-sm btn-primary"
+              >
+                Enroll Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

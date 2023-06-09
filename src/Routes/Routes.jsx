@@ -19,6 +19,7 @@ import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import InstructorRoute from "./InstructorRoute";
 import ManageCourses from "../pages/Dashboard/Admin/ManageCourses/ManageCourses";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 // all routes
 const routes = createBrowserRouter([
@@ -73,6 +74,10 @@ const routes = createBrowserRouter([
       {
         path: "payment-history",
         element: <StPaymentHistory />,
+      },
+      {
+        path: "payment/:id",
+        element: <Payment />,
       },
       // instructors dashboard routes
       {
