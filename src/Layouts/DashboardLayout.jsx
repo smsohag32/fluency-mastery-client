@@ -134,7 +134,9 @@ const DashboardLayout = () => {
                   <NavLink
                     to="/dashboard/dashboard"
                     className={({ isActive }) =>
-                      isActive ? "text-xl font-bold text-success" : ""
+                      isActive
+                        ? "text-xl font-bold text-success"
+                        : "text-xl font-bold text-success"
                     }
                   >
                     <MdDashboard /> Dashboard

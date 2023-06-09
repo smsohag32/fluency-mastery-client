@@ -16,7 +16,9 @@ const Header = () => {
     <div className="custom-bg  fixed top-0 backdrop-blur-2xl z-20 left-0 right-0">
       <div className="navbar relative px-5 default-container">
         <div className="flex-1">
-          <Link to="/">FluencyMastery</Link>
+          <Link to="/" className="text-xl uppercase font-bold">
+            <span className="text-info">Fluency</span>Mastery
+          </Link>
         </div>
         <ul
           className={`flex flex-col md:flex-row md:bg-transparent md:py-0 top-[80px] duration-500 transform h-[calc(100vh-70px)] left-0 right-2/3 md:h-auto absolute md:static gap-5 md:mr-10 ${
