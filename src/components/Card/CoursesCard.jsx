@@ -4,18 +4,18 @@ const CoursesCard = ({ courseInfo }) => {
       <div className="card w-full h-full">
         <div className="relative min-h-[40%]  object-contain overflow-hidden bg-cover bg-no-repeat">
           <img
-            src="https://img.freepik.com/free-photo/circuit-cyberspace-closeup-with-neon-lights_90220-1200.jpg?w=740&t=st=1686137683~exp=1686138283~hmac=6bc9029cb00fd30a82b4e83b50f5178b7cb0c8fef0adaf127b05869d8a777a6d"
+            src={courseInfo?.course_image}
             className="min-w-full object-cover h-60 transition duration-300 ease-in group-hover:scale-x-110"
           ></img>
         </div>
         <div className="card-body">
           <h2 className="card-title text-lg font-bold mb-1">
-            Lorem ipsum dolor sit amet.
+            {courseInfo?.course_name}
           </h2>
           <div className=" ">
-            <p>Instructors by Sheik sohag</p>
+            <p>Instructors by {courseInfo?.instructor_name}</p>
             <h1 className="text-2xl text-orange-400 font-medium opacity-80">
-              {/* $ {price} */} 500
+              {courseInfo?.price}
             </h1>
           </div>
           <div className="flex items-center justify-between">

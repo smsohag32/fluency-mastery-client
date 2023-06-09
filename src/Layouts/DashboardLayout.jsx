@@ -16,11 +16,18 @@ import {
 import { FaUserShield } from "react-icons/fa";
 import useAdmin from "../hooks/useAdmin";
 import useInstructorRole from "../hooks/useInstructorRole";
+import { useEffect, useState } from "react";
 const DashboardLayout = () => {
+  const [isStudent, setIsStudent] = useState(true);
   const { isAdmin } = useAdmin();
   const { isInstructor } = useInstructorRole();
-  console.log(isAdmin, isInstructor);
-  const isStudent = false;
+
+  useEffect(() => {
+    if (isAdmin || isInstructor) {
+      setIsStudent(false);
+    }
+  }, [isAdmin, isInstructor]);
+
   return (
     <div>
       <div className="drawer lg:drawer-open">

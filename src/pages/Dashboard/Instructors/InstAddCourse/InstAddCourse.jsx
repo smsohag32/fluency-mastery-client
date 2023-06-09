@@ -4,10 +4,14 @@ import { useAuth } from "../../../../hooks/useAuth";
 import { imageUpload } from "../../../../apis/imageUpload";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import IconSpin from "../../../../components/Spinner/IconSpin";
 
 const InstAddCourse = () => {
   const { user } = useAuth();
   const { axiosSecure } = useAxiosSecure();
+  const [loading, setLoading] = useState(false);
+
   // react hook form
   const {
     register,
@@ -18,7 +22,7 @@ const InstAddCourse = () => {
 
   // handle to add new course
   const handleAddCourse = (data) => {
-    console.log(data);
+    setLoading(true);
     const course_name = data.course_name;
     const image = data.course_image[0];
     imageUpload(image)
@@ -40,19 +44,24 @@ const InstAddCourse = () => {
           .then((res) => {
             console.log(res.data.insertedId);
             if (res.data.insertedId) {
+              setLoading(false);
               toast.success("Your new course added successful!");
               reset();
             }
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            setLoading(false);
+          });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setLoading(false);
+      });
   };
   return (
     <div>
       <PageTitle
         title="Add a new courses"
-        subTitle="Fluency Mastery Dashboard"
+        subTitle="Share Your Knowledge with Passion"
       />
       <div className="shadow-xl py-8 px-4 rounded-md">
         <form onSubmit={handleSubmit(handleAddCourse)}>
@@ -162,7 +171,9 @@ const InstAddCourse = () => {
             </div>
           </div>
           <div className="form-control mt-8">
-            <button className="btn btn-sm w-1/2 btn-success">Create</button>
+            <button className="btn btn-sm w-1/2 btn-success">
+              {loading ? <IconSpin /> : "Create"}
+            </button>
           </div>
         </form>
       </div>
