@@ -18,6 +18,7 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import InstructorRoute from "./InstructorRoute";
+import ManageCourses from "../pages/Dashboard/Admin/ManageCourses/ManageCourses";
 
 // all routes
 const routes = createBrowserRouter([
@@ -88,6 +89,10 @@ const routes = createBrowserRouter([
       },
 
       // admin dashboard routes
+      {
+        path: "manage-courses",
+        element: <ManageCourses />,
+      },
       {
         path: "manage-users",
         element: (
