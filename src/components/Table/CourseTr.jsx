@@ -2,7 +2,6 @@ const CourseTr = ({
   course,
   index,
   handleFeedback,
-  handleDenied,
   handleApprove,
   setIsOpen,
 }) => {
@@ -25,29 +24,27 @@ const CourseTr = ({
       <td className="text-xs">{course?.instructor_email}</td>
       <td>{course?.instructor_available_seats || 0}</td>
       <td>$ {course?.price || 0}</td>
-      <td className="font-bold">{course?.status || "pending"}</td>
+      <td className={`${course?.status === "approved" ? "text-success" : ""}`}>
+        {course?.status || "pending"}
+      </td>
 
       <td>
         <div className="flex flex-col gap-2">
           <button
+            disabled={course?.status === "approved"}
             onClick={() => handleApprove(course?._id)}
             className="btn btn-xs btn-success"
           >
             Approve
           </button>
           <button
-            onClick={() => handleDenied(course?._id)}
-            className="btn btn-xs btn-warning"
-          >
-            Deny
-          </button>
-          <button
+            disabled={course?.status === "denied"}
             onClick={() => {
               setIsOpen(true), handleFeedback(course);
             }}
-            className="btn btn-xs btn-info"
+            className="btn btn-xs btn-warning"
           >
-            Feedback
+            Deny
           </button>
         </div>
       </td>

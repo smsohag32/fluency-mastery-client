@@ -7,6 +7,7 @@ import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import UsersTr from "../../../../components/Table/UsersTr";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import PageTitle from "../../../../components/PageTitle/PageTitle";
 
 const ManageUsers = () => {
   const { loading } = useAuth();
@@ -100,7 +101,7 @@ const ManageUsers = () => {
 
   return (
     <div>
-      <SectionTitle title="Manage User" center={true}></SectionTitle>
+      <PageTitle title="Manage Users" subTitle="Look forward"></PageTitle>
       <div className="overflow-x-auto">
         <table className="table ">
           {/* head */}

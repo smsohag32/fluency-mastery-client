@@ -42,42 +42,29 @@ const ManageCourses = () => {
       }
     });
   };
-  // handle course denied
-  const handleDenied = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "Do you want to Denied it",
-      icon: "success",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosSecure
-          .patch(`/courses/${id}`, { status: "denied" })
-          .then((data) => {
-            console.log(data);
-            if (data?.data?.modifiedCount) {
-              toast.success("Approved successful");
-              refetch();
-            }
-          });
-      }
-    });
-  };
-  // send product feedback
+
+  // send course  feedback for denied
   const handleFeedback = (course) => {
     setSingleCourse(course);
   };
-  const sendFeedback = (id, message) => {
+
+  const handleDenied = (id, message) => {
     if (message) {
       axiosSecure
         .patch(`/courses/feedback/${id}`, { message })
         .then((res) => {
+          console.log(res);
           if (res?.data?.modifiedCount) {
-            setIsOpen(false);
-            toast.success("Feedback send successful");
+            axiosSecure
+              .patch(`/courses/${id}`, { status: "denied" })
+              .then((data) => {
+                console.log(data);
+                if (data?.data?.modifiedCount) {
+                  toast.success("Course Denied Successful");
+                  refetch();
+                  setIsOpen(false);
+                }
+              });
           } else {
             toast.error("Try to next time");
           }
@@ -123,7 +110,6 @@ const ManageCourses = () => {
                   key={course._id}
                   course={course}
                   handleApprove={handleApprove}
-                  handleDenied={handleDenied}
                   handleFeedback={handleFeedback}
                   index={index}
                   setIsOpen={setIsOpen}
@@ -137,7 +123,7 @@ const ManageCourses = () => {
         closeModal={closeModal}
         handleFeedback={handleFeedback}
         course={singleCourse}
-        sendFeedback={sendFeedback}
+        handleDenied={handleDenied}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-const FeedbackModal = ({ sendFeedback, closeModal, isOpen, course }) => {
+const FeedbackModal = ({ handleDenied, closeModal, isOpen, course }) => {
   const [message, setMessage] = useState("");
   console.log(message);
   return (
@@ -46,7 +46,7 @@ const FeedbackModal = ({ sendFeedback, closeModal, isOpen, course }) => {
                     className="textarea-bordered w-full textarea"
                     name="feedback"
                     placeholder="Type feedback message"
-                    onBlur={(e) => setMessage(e.target.value)}
+                    onChange={(e) => setMessage(e.target.value)}
                     rows="4"
                   ></textarea>
                 </div>
@@ -54,8 +54,9 @@ const FeedbackModal = ({ sendFeedback, closeModal, isOpen, course }) => {
                 <div className="flex mt-2 justify-around">
                   <button
                     type="button"
-                    className="inline-flex justify-center rounded-md btn btn-sm btn-info"
-                    onClick={() => sendFeedback(course?._id, message)}
+                    disabled={!message}
+                    className="inline-flex justify-center rounded-md btn btn-sm btn-warning"
+                    onClick={() => handleDenied(course?._id, message)}
                   >
                     Feedback
                   </button>
