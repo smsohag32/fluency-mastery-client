@@ -2,7 +2,6 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import {
   AiOutlineClose,
   AiOutlineFileDone,
-  AiOutlineLogout,
   AiOutlineMenuFold,
   AiOutlineSelect,
 } from "react-icons/ai";
@@ -13,15 +12,17 @@ import {
   MdPermDataSetting,
   MdTerminal,
 } from "react-icons/md";
-import { FaUserShield } from "react-icons/fa";
+import { BiLogOut } from "react-icons/bi";
+import { FaHome, FaUserShield } from "react-icons/fa";
 import useAdmin from "../hooks/useAdmin";
 import useInstructorRole from "../hooks/useInstructorRole";
 import { useEffect, useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 const DashboardLayout = () => {
-  const [isStudent, setIsStudent] = useState(true);
+  const [isStudent, setIsStudent] = useState(false);
   const { isAdmin } = useAdmin();
   const { isInstructor } = useInstructorRole();
-
+  const { user } = useAuth();
   useEffect(() => {
     if (isAdmin || isInstructor) {
       setIsStudent(false);
@@ -57,6 +58,15 @@ const DashboardLayout = () => {
               </label>
             </div>
             {/* Sidebar content here */}
+            <div className="flex items-center justify-center flex-col my-4">
+              <img
+                src={user?.photoURL}
+                className="rounded-full border-2"
+                alt="USER"
+              />
+              <p className="mt-2 font-bold">{user?.displayName}</p>
+              <p className="text-xs opacity-70">{user?.email}</p>
+            </div>
             {isStudent && (
               <>
                 <li>
@@ -172,12 +182,17 @@ const DashboardLayout = () => {
               </>
             )}
             <div className="flex flex-col gap-5 text-left">
-              <hr />
-              <Link to="/">Home</Link>
+              <div className="divider"></div>
+              <Link
+                className="font-bold flex hover:text-info transition ease-in duration-150 items-center w-5/6 mx-auto"
+                to="/"
+              >
+                <FaHome className="text-xl mr-3" /> Back To Home
+              </Link>
             </div>
-            <div className="mt-auto flex justify-around items-center">
-              <button className="btn btn-accent">
-                Logout <AiOutlineLogout size={30} />
+            <div className="mt-auto w-5/6 mx-auto">
+              <button className=" flex text-base transition ease-in duration-900 items-center gap-2 font-bold hover:text-stone-500">
+                <BiLogOut size={30} /> Logout
               </button>
             </div>
           </ul>
