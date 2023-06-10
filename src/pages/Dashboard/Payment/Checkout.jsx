@@ -73,7 +73,7 @@ const Checkout = ({ amount, paymentCourse }) => {
         cartId: paymentCourse?._id,
         course_name: paymentCourse?.course_name,
         price: amount,
-        data: new Date(),
+        date: new Date(),
       };
 
       axiosSecure.post("/payments", paymentInfo).then((res) => {
