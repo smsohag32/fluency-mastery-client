@@ -5,10 +5,8 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
-
 import Courses from "../pages/Courses/Courses/Courses";
 import Instructors from "../pages/Instructors/Instructors";
-import StudentHome from "../pages/Dashboard/Student/StudentHome/StudentHome";
 import StEnrolCourses from "../pages/Dashboard/Student/StEnrollCourses/StEnrolCourses";
 import StPaymentHistory from "../pages/Dashboard/Student/PaymentHistory/StPaymentHistory";
 import StSelectedCourses from "../pages/Dashboard/Student/StSelectedCourses/StSelectedCourses";
@@ -20,6 +18,7 @@ import PrivateRoute from "./PrivateRoute";
 import InstructorRoute from "./InstructorRoute";
 import ManageCourses from "../pages/Dashboard/Admin/ManageCourses/ManageCourses";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import DashboardHome from "../pages/Dashboard/Student/DashboardHome";
 
 // all routes
 const routes = createBrowserRouter([
@@ -60,7 +59,7 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/dashboard/",
-        element: <StudentHome />,
+        element: <DashboardHome />,
       },
       // student dashboard routes
       {
@@ -90,13 +89,21 @@ const routes = createBrowserRouter([
       },
       {
         path: "my-courses",
-        element: <InstCourses />,
+        element: (
+          <InstructorRoute>
+            <InstCourses />
+          </InstructorRoute>
+        ),
       },
 
       // admin dashboard routes
       {
         path: "manage-courses",
-        element: <ManageCourses />,
+        element: (
+          <AdminRoute>
+            <ManageCourses />
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-users",

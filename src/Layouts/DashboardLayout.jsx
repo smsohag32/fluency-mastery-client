@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   AiOutlineClose,
   AiOutlineFileDone,
@@ -22,13 +22,22 @@ const DashboardLayout = () => {
   const [isStudent, setIsStudent] = useState(false);
   const { isAdmin } = useAdmin();
   const { isInstructor } = useInstructorRole();
-  const { user } = useAuth();
+  const { user, userLogout } = useAuth();
+  const navigate = useNavigate();
+
+  // isStudent condition check
   useEffect(() => {
     if (isAdmin || isInstructor) {
       setIsStudent(false);
     }
   }, [isAdmin, isInstructor]);
 
+  // handle logout
+  const handleLogout = () => {
+    userLogout().then(() => {
+      navigate("/");
+    });
+  };
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -149,7 +158,7 @@ const DashboardLayout = () => {
               <>
                 <li>
                   <NavLink
-                    to="/dashboard/dashboard"
+                    to="/dashboard"
                     className={({ isActive }) =>
                       isActive
                         ? "text-xl font-bold text-success"
@@ -191,7 +200,10 @@ const DashboardLayout = () => {
               </Link>
             </div>
             <div className="mt-auto w-5/6 mx-auto">
-              <button className=" flex text-base transition ease-in duration-900 items-center gap-2 font-bold hover:text-stone-500">
+              <button
+                onClick={handleLogout}
+                className=" flex text-base transition ease-in duration-900 items-center gap-2 font-bold hover:text-stone-500"
+              >
                 <BiLogOut size={30} /> Logout
               </button>
             </div>
