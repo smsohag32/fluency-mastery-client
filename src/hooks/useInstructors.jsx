@@ -9,7 +9,7 @@ const useInstructors = () => {
   } = useQuery({
     queryKey: ["courses"],
     queryFn: async () => {
-      const res = await axios.get("/data.json");
+      const res = await axios.get("http://localhost:5000/users/instructors");
       return res.data;
     },
   });

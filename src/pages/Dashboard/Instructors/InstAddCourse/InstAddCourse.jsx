@@ -35,6 +35,7 @@ const InstAddCourse = () => {
           course_image: imageData?.data?.display_url,
           available_seats: parseInt(data.available_seats),
           price: parseFloat(data.price),
+          enroll: 0,
         };
 
         // data post to db

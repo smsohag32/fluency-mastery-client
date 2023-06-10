@@ -21,7 +21,7 @@ const Header = () => {
           </Link>
         </div>
         <ul
-          className={`flex flex-col md:flex-row md:bg-transparent md:py-0 top-[80px] duration-500 transform h-[calc(100vh-70px)] left-0 right-2/3 md:h-auto absolute md:static gap-5 md:mr-10 ${
+          className={`flex flex-col md:flex-row md:bg-transparent md:py-0 top-[80px] duration-500 transform h-[calc(100vh-70px)]  right-2/3 md:h-auto absolute md:static gap-5 md:mr-10 ${
             isOpen ? "custom-bg py-10 left-0" : "-left-full"
           }`}
         >
