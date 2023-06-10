@@ -69,7 +69,8 @@ const Checkout = ({ amount, paymentCourse }) => {
       const paymentInfo = {
         student_email: user?.email,
         transactionId: paymentIntent.id,
-        courseId: paymentCourse?._id,
+        courseId: paymentCourse?.courseId,
+        cartId: paymentCourse?._id,
         course_name: paymentCourse?.course_name,
         price: amount,
         data: new Date(),
