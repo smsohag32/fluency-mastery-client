@@ -73,6 +73,7 @@ const Checkout = ({ amount, paymentCourse }) => {
         cartId: paymentCourse?._id,
         course_name: paymentCourse?.course_name,
         price: amount,
+        instructor_name: paymentCourse?.instructor_name,
         date: new Date(),
       };
 

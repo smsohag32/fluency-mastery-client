@@ -19,7 +19,7 @@ import useInstructorRole from "../hooks/useInstructorRole";
 import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 const DashboardLayout = () => {
-  const [isStudent, setIsStudent] = useState(false);
+  const [isStudent, setIsStudent] = useState(true);
   const { isAdmin } = useAdmin();
   const { isInstructor } = useInstructorRole();
   const { user, userLogout } = useAuth();
@@ -70,7 +70,7 @@ const DashboardLayout = () => {
             <div className="flex items-center justify-center flex-col my-4">
               <img
                 src={user?.photoURL}
-                className="rounded-full border-2"
+                className="rounded-full w-20 border-2"
                 alt="USER"
               />
               <p className="mt-2 font-bold">{user?.displayName}</p>
