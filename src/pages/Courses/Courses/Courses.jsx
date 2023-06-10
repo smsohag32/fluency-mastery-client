@@ -6,6 +6,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import useCourse from "../../../hooks/useCourse";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const Courses = () => {
   const { courses, courseLoading } = useCourse();
@@ -13,8 +14,10 @@ const Courses = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { axiosSecure } = useAxiosSecure();
+  const [cardLoading, setCardLoading] = useState(false);
   // handle add to Cart
   const handleCart = (courseInfo) => {
+    setCardLoading(true);
     const courseId = courseInfo?._id;
     delete courseInfo._id;
     const newCart = {
@@ -27,9 +30,15 @@ const Courses = () => {
       axiosSecure.post("/carts", newCart).then((res) => {
         console.log(res.data);
         toast.success("Course Add to Cart Success");
+        setCardLoading(false);
+        console.log(res);
+        if (res.data.insertedId) {
+          navigate(`/dashboard/payment/${res?.data?.insertedId}`);
+        }
       });
     } else {
       navigate("/login", { state: { from: location } });
+      setCardLoading(false);
     }
   };
   if (courseLoading) {
@@ -42,6 +51,7 @@ const Courses = () => {
         {courses?.length > 0 &&
           courses.map((course) => (
             <CoursesCard
+              cardLoading={cardLoading}
               key={course._id}
               handleCart={handleCart}
               courseInfo={course}

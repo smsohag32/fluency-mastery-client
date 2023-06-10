@@ -3,14 +3,37 @@ import PageTitle from "../../../../components/PageTitle/PageTitle";
 import SelectedCourseTr from "../../../../components/Table/SelectedCourseTr";
 import useSelectedCart from "../../../../hooks/useSelectedCart";
 import { useAuth } from "../../../../hooks/useAuth";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const StSelectedCourses = () => {
   const { user } = useAuth();
-  const { selectedCourses, courseLoading } = useSelectedCart();
+  const { selectedCourses, courseLoading, refetch } = useSelectedCart();
+  const { axiosSecure } = useAxiosSecure();
 
   // handle Delete selected courses
   const handleDelete = (id) => {
-    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want Remove",
+      icon: "success",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (id) {
+          axiosSecure.delete(`/carts/${id}`).then((res) => {
+            if (res?.data?.deletedCount > 0) {
+              refetch();
+              toast.success("Deleted Successful");
+            }
+          });
+        }
+      }
+    });
   };
 
   if (courseLoading) {

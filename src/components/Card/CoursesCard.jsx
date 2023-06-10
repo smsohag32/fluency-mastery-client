@@ -26,14 +26,12 @@ const CoursesCard = ({ courseInfo, handleCart }) => {
             </p>
           </div>
           <div className="w-full mt-6 flex justify-end">
-            <Link to={`/dashboard/payment/${courseInfo?._id}`}>
-              <button
-                onClick={() => handleCart(courseInfo)}
-                className="btn btn-sm btn-primary"
-              >
-                Enroll Now
-              </button>
-            </Link>
+            <button
+              onClick={() => handleCart(courseInfo)}
+              className="btn btn-sm btn-primary"
+            >
+              Enroll Now
+            </button>
           </div>
         </div>
       </div>

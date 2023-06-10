@@ -18,6 +18,12 @@ const SelectedCourseTr = ({ course, index, handleDelete }) => {
           >
             Pay
           </Link>
+          <button
+            onClick={() => handleDelete(course?._id)}
+            className="btn btn-xs btn-warning"
+          >
+            Delete
+          </button>
         </div>
       </td>
     </tr>
