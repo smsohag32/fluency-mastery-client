@@ -22,8 +22,8 @@ const About = () => {
         subTitle="Contact us to any query"
         center={true}
       ></SectionTitle>
-      <div className="flex default-container flex-col md:flex-row gap-8">
-        <div className="w-full space-y-2">
+      <div className="flex p-5 default-container px-5 flex-col md:flex-row gap-8">
+        <div className="w-full text-white text-opacity-90 space-y-2">
           <h1 className="text-lg font-bold">
             Welcome to Fluency Mastery! We are a dedicated team passionate about
             helping individuals improve their language fluency.

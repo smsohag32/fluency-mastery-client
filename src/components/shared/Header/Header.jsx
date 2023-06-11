@@ -1,20 +1,22 @@
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Sling } from "hamburger-react";
 import { useAuth } from "../../../hooks/useAuth";
 
 import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { ThemeContext } from "../../../Context/ThemeProvider";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, userLogout } = useAuth();
-  const lightTheme = true;
+  const { isDarkMode, handleThemeToggle } = useContext(ThemeContext);
+
   // handle log out
   const handleLogout = () => {
     userLogout();
   };
   return (
-    <div className="custom-bg  fixed top-0 backdrop-blur-2xl z-20 left-0 right-0">
+    <div className="bg-base-200 fixed top-0 backdrop-blur-2xl z-20 left-0 right-0">
       <div className="navbar relative px-5 default-container">
         <div className="flex-1">
           <Link to="/" className="text-xl uppercase font-bold">
@@ -61,8 +63,11 @@ const Header = () => {
             </li>
           )}
         </ul>
-        <span className="mr-5 text-2xl cursor-pointer hover:text-slate-400">
-          {lightTheme ? <MdDarkMode /> : <MdLightMode />}
+        <span
+          onClick={handleThemeToggle}
+          className="mr-5 text-2xl cursor-pointer hover:text-slate-400"
+        >
+          {isDarkMode ? <MdDarkMode /> : <MdLightMode />}
         </span>
         {user?.email ? (
           <div title={user?.displayName} className="flex-none gap-5">
