@@ -8,6 +8,7 @@ const Footer = () => {
           <div className="w-full md:w-1/3 text-center md:text-left">
             <h2 className="text-lg text-white font-semibold">FluencyMastery</h2>
             <p className="text-gray-400 mt-2">Learn languages with ease.</p>
+            <p className="text-gray-400">1234 Main Street, City, Country</p>
           </div>
           <div className="w-full md:w-1/3 text-center">
             <ul className="flex justify-center md:justify-start">

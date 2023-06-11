@@ -7,9 +7,13 @@ import useCourse from "../../../hooks/useCourse";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructorRole from "../../../hooks/useInstructorRole";
 
 const Courses = () => {
   const { courses, courseLoading } = useCourse();
+  const { isAdmin } = useAdmin();
+  const { isInstructor } = useInstructorRole();
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -55,6 +59,8 @@ const Courses = () => {
               key={course._id}
               handleCart={handleCart}
               courseInfo={course}
+              isAdmin={isAdmin}
+              isInstructor={isInstructor}
             ></CoursesCard>
           ))}
       </div>

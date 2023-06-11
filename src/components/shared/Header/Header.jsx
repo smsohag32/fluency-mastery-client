@@ -2,12 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Sling } from "hamburger-react";
 import { useAuth } from "../../../hooks/useAuth";
-import useAdmin from "../../../hooks/useAdmin";
+
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, userLogout } = useAuth();
-  // const { isAdmin } = useAdmin();
+  const lightTheme = true;
   // handle log out
   const handleLogout = () => {
     userLogout();
@@ -60,7 +61,9 @@ const Header = () => {
             </li>
           )}
         </ul>
-
+        <span className="mr-5 text-2xl cursor-pointer hover:text-slate-400">
+          {lightTheme ? <MdDarkMode /> : <MdLightMode />}
+        </span>
         {user?.email ? (
           <div title={user?.displayName} className="flex-none gap-5">
             <div className="dropdown dropdown-end">
@@ -74,13 +77,7 @@ const Header = () => {
                 className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Settings</a>
+                  <a className="justify-between">Profile</a>
                 </li>
                 <li>
                   <button

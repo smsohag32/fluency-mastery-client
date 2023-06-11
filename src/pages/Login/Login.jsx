@@ -8,11 +8,12 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import IconSpin from "../../components/Spinner/IconSpin";
+import PasswordShow from "../../components/Button/PasswordShow";
 
 const Login = () => {
   const { loginUser, loading, setLoading } = useAuth();
   const [loginError, setLoginError] = useState("");
-
+  const [isShow, setIsShow] = useState();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -84,7 +85,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   placeholder="Enter Email Address"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                  className="w-full px-4 py-3 text-black rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                 />
                 {errors?.email && (
                   <span className="text-red-600 text-sm">
@@ -93,18 +94,19 @@ const Login = () => {
                 )}
               </div>
 
-              <div className="mt-4">
+              <div className="mt-4 relative">
                 <label className="block text-gray-700">Password</label>
                 <input
                   {...register("password", {
                     required: "This field is required",
                   })}
-                  type="password"
+                  type={`${isShow ? "text" : "password"}`}
                   name="password"
                   placeholder="Enter Password"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                  className="w-full px-4 text-black py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
                 />
+                <PasswordShow isShow={isShow} setIsShow={setIsShow} />
                 {errors?.password && (
                   <span className="text-red-600 text-sm">
                     <small>{errors.password?.message}</small>

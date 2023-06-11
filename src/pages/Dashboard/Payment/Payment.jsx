@@ -30,7 +30,7 @@ const Payment = () => {
           <h1>Instructor Name: {paymentCourse?.instructor_name}</h1>
           <h1>Course Price: {paymentCourse?.price}</h1>
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex w-3/4 mx-auto items-center justify-center">
           <Elements stripe={stripePromise}>
             <Checkout amount={amount} paymentCourse={paymentCourse} />
           </Elements>

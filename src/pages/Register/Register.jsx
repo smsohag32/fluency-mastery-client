@@ -8,19 +8,22 @@ import { toast } from "react-toastify";
 import IconSpin from "../../components/Spinner/IconSpin";
 import registerImage from "../../assets/login/register.svg";
 import saveUser from "../../apis/users";
+import PasswordShow from "../../components/Button/PasswordShow";
 const Register = () => {
   const { createUser, userLogout, updateProfileInfo, loading, setLoading } =
     useAuth();
   const [registerError, setRegisterError] = useState("");
   const navigate = useNavigate();
-
+  const [isShow, setIsShow] = useState(false);
   //   react hook form
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
+    watch,
   } = useForm();
+  const password = watch("password", "");
 
   // handle login
   const onSubmit = (data) => {
@@ -126,37 +129,50 @@ const Register = () => {
                 )}
               </div>
 
-              <div className="mt-4">
+              <div className="mt-4 relative">
                 <label className="block text-gray-700">Password</label>
                 <input
                   {...register("password", {
                     required: "This field is required* ",
+                    minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 characters long",
+                    },
+                    pattern: {
+                      value: /^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+                      message:
+                        "Password must contain at least one capital letter and one special character",
+                    },
                   })}
-                  type="password"
+                  type={`${isShow ? "text" : "password"}`}
                   name="password"
                   placeholder="Enter Password"
                   className="w-full px-4 py-3 text-slate-700  rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
                 />
-                {errors?.email && (
+                <PasswordShow isShow={isShow} setIsShow={setIsShow} />
+                {errors?.password && (
                   <span className="text-red-600 text-sm">
                     <small>{errors.password?.message}</small>
                   </span>
                 )}
               </div>
-              <div className="mt-4">
+              <div className="mt-4 relative">
                 <label className="block text-gray-700">Confirm Password</label>
                 <input
                   {...register("confirm", {
                     required: "This field is required",
+                    validate: (value) =>
+                      value === password || "Passwords do not match",
                   })}
-                  type="password"
+                  type={`${isShow ? "text" : "password"}`}
                   name="confirm"
                   placeholder="Enter Confirm Password"
                   className="w-full px-4 py-3 rounded-lg text-slate-700  bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
                 />
-                {errors?.email && (
+                <PasswordShow isShow={isShow} setIsShow={setIsShow} />
+                {errors?.confirm && (
                   <span className="text-red-600 text-sm">
                     <small>{errors.confirm?.message}</small>
                   </span>

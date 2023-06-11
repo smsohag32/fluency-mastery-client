@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const CoursesCard = ({ courseInfo, handleCart }) => {
+const CoursesCard = ({ courseInfo, handleCart, isAdmin, isInstructor }) => {
   return (
     <div className="shadow-xl w-full border-b-2 rounded-xl group duration-1000 overflow-hidden">
       <div className="card w-full h-full">
@@ -29,6 +29,7 @@ const CoursesCard = ({ courseInfo, handleCart }) => {
             <button
               onClick={() => handleCart(courseInfo)}
               className="btn btn-sm btn-primary"
+              disabled={isInstructor || isAdmin}
             >
               Enroll Now
             </button>
