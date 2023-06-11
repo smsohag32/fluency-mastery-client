@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../../../components/Spinner/Spinner";
 import PageTitle from "../../../../components/PageTitle/PageTitle";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const InstCourses = () => {
   const { user, loading } = useAuth();
@@ -25,7 +26,7 @@ const InstCourses = () => {
 
   // handle to update
   const handleUpdate = (id) => {
-    console.log(id);
+    toast.error("Update course information coming soon");
   };
 
   if (courseLoading) {
