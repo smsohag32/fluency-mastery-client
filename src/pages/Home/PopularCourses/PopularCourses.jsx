@@ -9,12 +9,13 @@ import { toast } from "react-toastify";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructorRole from "../../../hooks/useInstructorRole";
+import { useAuth } from "../../../hooks/useAuth";
 
 const PopularCourses = () => {
   const [cardLoading, setCardLoading] = useState();
   const navigate = useNavigate();
   const { axiosSecure } = useAxiosSecure();
-  const { user } = useState();
+  const { user } = useAuth();
   const { isAdmin } = useAdmin();
   const { isInstructor } = useInstructorRole();
 
@@ -64,7 +65,7 @@ const PopularCourses = () => {
         {isLoading ? (
           <Spinner />
         ) : (
-          <div className="default-container px-6 md:px-0 grid-cols-1 md:grid-cols-2 grid gap-12">
+          <div className="default-container px-6 md:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid gap-12">
             {popularCourses?.length > 0 &&
               popularCourses.map((course) => (
                 <CoursesCard

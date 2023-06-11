@@ -10,23 +10,24 @@ import img1 from "../../../assets/teaching/teach1.png";
 import img2 from "../../../assets/teaching/teach2.png";
 import img3 from "../../../assets/teaching/teach3.png";
 import { Link } from "react-router-dom";
+import { Fade, Slide } from "react-reveal";
 const HeaderBanner = () => {
   // banner slider information
   const slidersInfo = [
     {
-      title: "some thing about",
+      title: "Unlock Your Potential",
       img: img1,
-      description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, neque asperiores. Maxime sequi corrupti`,
+      description: `Discover a world of learning opportunities with our immersive courses and expert instructors.`,
     },
     {
-      title: "some thing about",
+      title: "Ignite Your Learning Journey",
       img: img2,
-      description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, neque asperiores. Maxime sequi corrupti`,
+      description: `Embark on a transformative learning experience and unleash your full potential.`,
     },
     {
-      title: "some thing about",
+      title: "Learn, Grow, Succeed",
       img: img3,
-      description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, neque asperiores. Maxime sequi corrupti`,
+      description: `Fuel your personal and professional growth with our dynamic courses and dedicated instructors.`,
     },
   ];
 
@@ -49,15 +50,21 @@ const HeaderBanner = () => {
           <SwiperSlide key={index} className="relative">
             <img className="" src={slid.img} />
             <div className="absolute hero-overlay top-0 left-0 right-0 bottom-0 flex items-center bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.9)] justify-center">
-              <div className="default-container text-white">
+              <div className="default-container text-center md:text-left text-white">
                 <div className="md:max-w-xl">
-                  <h1 className="text-2xl md:text-3xl font-bold uppercase">
-                    {slid.title}
-                  </h1>
-                  <p className="opacity-70 mt-2 mb-8">{slid.description}</p>
-                  <Link to="/courses" className="btn btn-info">
-                    Enroll Now
-                  </Link>
+                  <Fade left>
+                    <h1 className="text-2xl md:text-3xl font-bold uppercase">
+                      {slid.title}
+                    </h1>
+                  </Fade>
+                  <Slide right>
+                    <p className="opacity-70 mt-2 mb-8">{slid.description}</p>
+                  </Slide>
+                  <Fade bottom>
+                    <Link to="/courses" className="btn btn-info">
+                      Enroll Now
+                    </Link>
+                  </Fade>
                 </div>
               </div>
             </div>

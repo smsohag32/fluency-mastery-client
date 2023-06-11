@@ -16,6 +16,7 @@ const Checkout = ({ amount, paymentCourse }) => {
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
   const [transactionId, setTransactionId] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     if (amount > 0) {
@@ -25,18 +26,19 @@ const Checkout = ({ amount, paymentCourse }) => {
     }
   }, [axiosSecure, amount]);
 
-  console.log(clientSecret);
   // handle payment pay
   const handleSubmit = async (event) => {
     event.preventDefault();
     setCardError("");
-
+    setIsProcessing(true);
     if (!stripe || !elements) {
+      setIsProcessing(false);
       return;
     }
 
     const card = elements.getElement(CardElement);
     if (card === null) {
+      setIsProcessing(false);
       return;
     }
 
@@ -46,6 +48,7 @@ const Checkout = ({ amount, paymentCourse }) => {
     });
     if (error) {
       setCardError(error.message);
+      setIsProcessing(false);
     }
 
     const { paymentIntent, error: confirmError } =
@@ -60,9 +63,10 @@ const Checkout = ({ amount, paymentCourse }) => {
       });
 
     if (confirmError) {
+      setIsProcessing(false);
       setCardError(confirmError.message);
     }
-
+    setIsProcessing(false);
     // save payment information in db
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
@@ -88,13 +92,16 @@ const Checkout = ({ amount, paymentCourse }) => {
   };
 
   return (
-    <form className="w-full" onSubmit={handleSubmit}>
+    <form
+      className="w-3/4 p-10 mx-auto flex- items-center justify-center"
+      onSubmit={handleSubmit}
+    >
       <CardElement
         options={{
           style: {
             base: {
               fontSize: "16px",
-              color: "#424770",
+              color: "#fff",
               "::placeholder": {
                 color: "#aab7c4",
               },
@@ -109,9 +116,15 @@ const Checkout = ({ amount, paymentCourse }) => {
         {cardError && <p className="text-warning">{cardError}</p>}
         {success && <p className="text-info">{success}</p>}
       </div>
-      <button type="submit" className="btn btn-xs btn-info" disabled={!stripe}>
-        Confirm Pay
-      </button>
+      <div className="w-3/6 ms-12 pt-4">
+        <button
+          type="submit"
+          className="btn w-full  btn-sm btn-info"
+          disabled={!stripe || isProcessing}
+        >
+          Confirm Pay
+        </button>
+      </div>
     </form>
   );
 };

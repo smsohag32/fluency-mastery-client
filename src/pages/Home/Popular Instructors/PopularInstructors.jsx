@@ -26,7 +26,6 @@ const PopularInstructors = () => {
         <Spinner />
       ) : (
         <div className="default-container px-6 md:px-0 grid-cols-1 md:grid-cols-2 grid gap-12">
-          <InstructorCard />
           {instructors?.length > 0 &&
             instructors.map((instructor) => (
               <InstructorCard

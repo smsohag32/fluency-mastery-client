@@ -56,7 +56,11 @@ const Courses = () => {
         <title>FluencyMastery | Courses</title>
       </Helmet>
       <div className="py-12 default-container">
-        <SectionTitle title="All Courses" center={true} />
+        <SectionTitle
+          title="Explore Our Courses"
+          subTitle="Expand your knowledge with our diverse selection of courses"
+          center={true}
+        />
         <div className="px-8 md:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses?.length > 0 &&
             courses.map((course) => (

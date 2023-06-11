@@ -16,7 +16,7 @@ const Header = () => {
     userLogout();
   };
   return (
-    <div className="bg-base-200 fixed top-0 backdrop-blur-2xl z-20 left-0 right-0">
+    <div className="bg-base-200 bg-opacity-90 z-40 fixed top-0 backdrop-blur-2xl left-0 right-0">
       <div className="navbar relative px-5 default-container">
         <div className="flex-1">
           <Link to="/" className="text-xl uppercase font-bold">
@@ -24,8 +24,8 @@ const Header = () => {
           </Link>
         </div>
         <ul
-          className={`flex flex-col md:flex-row md:bg-transparent md:py-0 top-[80px] duration-500 transform h-[calc(100vh-70px)]  right-2/3 md:h-auto absolute md:static gap-5 md:mr-10 ${
-            isOpen ? "custom-bg py-10 left-0" : "-left-full"
+          className={`flex flex-col md:flex-row md:bg-transparent md:py-0 top-[80px] duration-500 transform h-[calc(100vh-70px)] w-4/6 md:w-auto right-2/3 md:h-auto absolute md:static gap-5 md:mr-10 ${
+            isOpen ? "bg-base-200 py-10 left-0" : "-left-full"
           }`}
         >
           <li>
@@ -67,7 +67,7 @@ const Header = () => {
           onClick={handleThemeToggle}
           className="mr-5 text-2xl cursor-pointer hover:text-slate-400"
         >
-          {isDarkMode ? <MdDarkMode /> : <MdLightMode />}
+          {isDarkMode ? <MdLightMode /> : <MdDarkMode />}
         </span>
         {user?.email ? (
           <div title={user?.displayName} className="flex-none gap-5">

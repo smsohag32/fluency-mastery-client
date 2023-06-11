@@ -1,4 +1,3 @@
-import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import bg from "../../../../assets/bg/world.svg";
 import { toast } from "react-toastify";
 const About = () => {
@@ -15,16 +14,16 @@ const About = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
       }}
-      className="pb-20 pt-1"
+      className="py-16"
     >
-      <SectionTitle
-        title="About us"
-        subTitle="Contact us to any query"
-        center={true}
-      ></SectionTitle>
-      <div className="flex p-5 default-container px-5 flex-col md:flex-row gap-8">
+      <div className="flex p-5 default-container px-5 flex-col md:flex-row md:items-center gap-8">
         <div className="w-full text-white text-opacity-90 space-y-2">
-          <h1 className="text-lg font-bold">
+          <h1 className="text-2xl md:text-3xl text-white opacity-90 font-bold">
+            About us
+          </h1>
+          <p className="text-info text-sm mt-1 mb-2">Contact us any query</p>
+          <hr className="max-w-xs" />
+          <h1 className="text-lg font-bold mt-2">
             Welcome to Fluency Mastery! We are a dedicated team passionate about
             helping individuals improve their language fluency.
           </h1>
@@ -44,7 +43,7 @@ const About = () => {
             <li>Address: 1234 Main Street, City, Country</li>
           </ul>
         </div>
-        <div className="w-full">
+        <div className="w-full flex flex-col">
           <form
             onSubmit={handleSendMessage}
             className="bg-[#2b0d3f] bg-opacity-60 flex rounded-md flex-col gap-3 backdrop-blur-xl p-8 w-full"
@@ -69,8 +68,8 @@ const About = () => {
                 required
               ></textarea>
             </div>
-            <div className="text-end">
-              <button type="submit" className="btn btn-sm btn-info">
+            <div className="w-full">
+              <button type="submit" className="btn w-full btn-sm btn-info">
                 Send Message
               </button>
             </div>

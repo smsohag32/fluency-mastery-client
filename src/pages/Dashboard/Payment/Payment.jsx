@@ -27,14 +27,23 @@ const Payment = () => {
       <Helmet>
         <title>FluencyMastery | Payment</title>
       </Helmet>
-      <PageTitle title="Payment now" subTitle=""></PageTitle>
-      <div className="border-2 border-opacity-30 p-5">
-        <div className="text-center">
-          <h1>Course Name: {paymentCourse?.course_name}</h1>
-          <h1>Instructor Name: {paymentCourse?.instructor_name}</h1>
-          <h1>Course Price: {paymentCourse?.price}</h1>
+      <PageTitle
+        title="Secure Payment"
+        subTitle="Complete your Enroll with confidence"
+      ></PageTitle>
+      <div className="">
+        <div className="max-w-md mt-4 mx-auto">
+          <h1 className="text-xl font-bold">
+            Course Name: {paymentCourse?.course_name}
+          </h1>
+          <h1 className="text-sm mb-4">
+            Instructor Name: {paymentCourse?.instructor_name}
+          </h1>
+          <h1 className="font-bold text-lg text-warning">
+            Course Price: ${paymentCourse?.price}
+          </h1>
         </div>
-        <div className="flex w-3/4 mx-auto items-center justify-center">
+        <div className="flex bg-slate-600 rounded-xl my-8  w-3/4 mx-auto items-center justify-center">
           <Elements stripe={stripePromise}>
             <Checkout amount={amount} paymentCourse={paymentCourse} />
           </Elements>

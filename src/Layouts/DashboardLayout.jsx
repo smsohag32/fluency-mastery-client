@@ -49,7 +49,7 @@ const DashboardLayout = () => {
               htmlFor="my-drawer-2"
               className="drawer-overlay cursor-pointer"
             >
-              <AiOutlineMenuFold size={40} color="white" />
+              <AiOutlineMenuFold size={40} className="" />
             </label>
           </div>
 
@@ -63,7 +63,7 @@ const DashboardLayout = () => {
                 htmlFor="my-drawer-2"
                 className="drawer-overlay cursor-pointer"
               >
-                <AiOutlineClose size={40} color="white" />
+                <AiOutlineClose size={40} />
               </label>
             </div>
             {/* Sidebar content here */}

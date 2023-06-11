@@ -1,3 +1,4 @@
+import { Fade, Flip, Zoom } from "react-reveal";
 import { Link } from "react-router-dom";
 
 const CoursesCard = ({
@@ -11,10 +12,12 @@ const CoursesCard = ({
     <div className="shadow-xl w-full border-b-2 rounded-xl group duration-1000 overflow-hidden">
       <div className="card w-full h-full">
         <div className="relative min-h-[40%]  object-contain overflow-hidden bg-cover bg-no-repeat">
-          <img
-            src={courseInfo?.course_image}
-            className="min-w-full object-cover h-60 transition duration-300 ease-in group-hover:scale-x-110"
-          ></img>
+          <Zoom>
+            <img
+              src={courseInfo?.course_image}
+              className="min-w-full object-cover h-60 transition duration-300 ease-in group-hover:scale-x-110"
+            ></img>
+          </Zoom>
           {courseInfo?.available_seats == 0 && (
             <div className="badge font-bold leading-relaxed badge-warning absolute top-0 right-0">
               <span>Seats Full</span>
@@ -22,34 +25,41 @@ const CoursesCard = ({
           )}
         </div>
         <div className="card-body">
-          <h2 className="card-title text-lg font-bold mb-1">
-            {courseInfo?.course_name}
-          </h2>
-          <div className=" ">
-            <p>Instructors by {courseInfo?.instructor_name}</p>
+          <Flip right>
+            <h2 className=" text-xl font-bold leading-tight">
+              {courseInfo?.course_name}
+            </h2>
+          </Flip>
+          <p className="mb-2 text-sm">
+            Instructor: {courseInfo?.instructor_name}
+          </p>
+          <div className="">
             <h1 className="text-2xl text-orange-400 font-medium opacity-80">
-              {courseInfo?.price}
+              Price: $ {courseInfo?.price}
             </h1>
           </div>
           <div className="flex items-center justify-between">
-            <p className="text-xs">
-              Available Seats : {courseInfo?.available_seats}
+            <p className="text-lg text-warning">
+              <span className="text-info text-sm mr-1">Available Seats: </span>
+              {courseInfo?.available_seats}
             </p>
           </div>
-          <div className="w-full mt-6 flex justify-end">
-            <button
-              onClick={() => handleCart(courseInfo)}
-              className="btn btn-sm btn-primary"
-              disabled={
-                isInstructor ||
-                isAdmin ||
-                courseInfo?.available_seats == 0 ||
-                cardLoading
-              }
-            >
-              Enroll Now
-            </button>
-          </div>
+          <Fade right>
+            <div className="w-full mt-6 flex justify-end">
+              <button
+                onClick={() => handleCart(courseInfo)}
+                className="btn w-full btn-sm btn-info"
+                disabled={
+                  isInstructor ||
+                  isAdmin ||
+                  courseInfo?.available_seats == 0 ||
+                  cardLoading
+                }
+              >
+                Enroll Now
+              </button>
+            </div>
+          </Fade>
         </div>
       </div>
     </div>
