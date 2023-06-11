@@ -1,20 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import useAxiosSecure from "./useAxiosSecure";
-import { useAuth } from "./useAuth";
 
-const useCourse = () => {
-  const { axiosSecure } = useAxiosSecure();
-  const { loading } = useAuth();
+const useCourseApproved = () => {
   const {
     data: courses = [],
     isLoading: courseLoading,
     refetch,
   } = useQuery({
     queryKey: ["courses"],
-    enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get("http://localhost:5000/courses");
+      const res = await axios.get("http://localhost:5000/courses/approved");
       return res.data;
     },
   });
@@ -22,4 +17,4 @@ const useCourse = () => {
   return { courses, courseLoading, refetch };
 };
 
-export default useCourse;
+export default useCourseApproved;

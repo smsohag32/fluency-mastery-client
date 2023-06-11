@@ -8,6 +8,7 @@ import UsersTr from "../../../../components/Table/UsersTr";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import PageTitle from "../../../../components/PageTitle/PageTitle";
+import { Helmet } from "react-helmet";
 
 const ManageUsers = () => {
   const { loading } = useAuth();
@@ -101,6 +102,9 @@ const ManageUsers = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>FluencyMastery | Manage Users</title>
+      </Helmet>
       <PageTitle title="Manage Users" subTitle="Look forward"></PageTitle>
       <div className="overflow-x-auto">
         <table className="table ">

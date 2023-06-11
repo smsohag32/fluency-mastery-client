@@ -27,7 +27,7 @@ const UsersTr = ({
           <button
             disabled={singleUser?.role === "admin"}
             onClick={() => handleMakeAdmin(singleUser?.email)}
-            className="btn btn-xs btn-success"
+            className="btn btn-xs btn-info"
           >
             Make Admin
           </button>

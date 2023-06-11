@@ -5,6 +5,7 @@ import useSelectedCart from "../../../hooks/useSelectedCart";
 import Checkout from "./Checkout";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { Helmet } from "react-helmet";
 
 const Payment = () => {
   const { selectedCourses, courseLoading } = useSelectedCart();
@@ -23,6 +24,9 @@ const Payment = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>FluencyMastery | Payment</title>
+      </Helmet>
       <PageTitle title="Payment now" subTitle=""></PageTitle>
       <div className="border-2 border-opacity-30 p-5">
         <div className="text-center">

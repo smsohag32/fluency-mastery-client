@@ -8,6 +8,7 @@ import "./style.css";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import FeedbackModal from "../../../../components/Modal/FeedbackModal";
+import { Helmet } from "react-helmet";
 
 const ManageCourses = () => {
   const { courses, courseLoading, refetch } = useCourse();
@@ -83,6 +84,9 @@ const ManageCourses = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>FluencyMastery | Manage Courses</title>
+      </Helmet>
       <PageTitle
         title="Course Management"
         subTitle="Empowering You to Shape the Learning Experience"

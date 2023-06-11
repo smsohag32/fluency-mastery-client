@@ -19,3 +19,7 @@ html{
 .custom-bg{
   @apply bg-[#444654]
 }
+
+.text-primary{
+  @apply text-info
+}

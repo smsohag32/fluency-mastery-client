@@ -3,15 +3,17 @@ import CoursesCard from "../../../components/Card/CoursesCard";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import Spinner from "../../../components/Spinner/Spinner";
 import { useAuth } from "../../../hooks/useAuth";
-import useCourse from "../../../hooks/useCourse";
+
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructorRole from "../../../hooks/useInstructorRole";
+import useCourseApproved from "../../../hooks/useCourseApproved";
+import { Helmet } from "react-helmet";
 
 const Courses = () => {
-  const { courses, courseLoading } = useCourse();
+  const { courses, courseLoading } = useCourseApproved();
   const { isAdmin } = useAdmin();
   const { isInstructor } = useInstructorRole();
   const { user } = useAuth();
@@ -49,22 +51,27 @@ const Courses = () => {
     return <Spinner />;
   }
   return (
-    <div className="py-12 default-container">
-      <SectionTitle title="All Courses" center={true} />
-      <div className="px-8 md:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {courses?.length > 0 &&
-          courses.map((course) => (
-            <CoursesCard
-              cardLoading={cardLoading}
-              key={course._id}
-              handleCart={handleCart}
-              courseInfo={course}
-              isAdmin={isAdmin}
-              isInstructor={isInstructor}
-            ></CoursesCard>
-          ))}
+    <>
+      <Helmet>
+        <title>FluencyMastery | Courses</title>
+      </Helmet>
+      <div className="py-12 default-container">
+        <SectionTitle title="All Courses" center={true} />
+        <div className="px-8 md:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courses?.length > 0 &&
+            courses.map((course) => (
+              <CoursesCard
+                cardLoading={cardLoading}
+                key={course._id}
+                handleCart={handleCart}
+                courseInfo={course}
+                isAdmin={isAdmin}
+                isInstructor={isInstructor}
+              ></CoursesCard>
+            ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

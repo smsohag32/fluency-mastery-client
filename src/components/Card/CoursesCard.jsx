@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
-const CoursesCard = ({ courseInfo, handleCart, isAdmin, isInstructor }) => {
+const CoursesCard = ({
+  courseInfo,
+  cardLoading,
+  handleCart,
+  isAdmin,
+  isInstructor,
+}) => {
   return (
     <div className="shadow-xl w-full border-b-2 rounded-xl group duration-1000 overflow-hidden">
       <div className="card w-full h-full">
@@ -9,6 +15,11 @@ const CoursesCard = ({ courseInfo, handleCart, isAdmin, isInstructor }) => {
             src={courseInfo?.course_image}
             className="min-w-full object-cover h-60 transition duration-300 ease-in group-hover:scale-x-110"
           ></img>
+          {courseInfo?.available_seats == 0 && (
+            <div className="badge font-bold leading-relaxed badge-warning absolute top-0 right-0">
+              <span>Seats Full</span>
+            </div>
+          )}
         </div>
         <div className="card-body">
           <h2 className="card-title text-lg font-bold mb-1">
@@ -29,7 +40,12 @@ const CoursesCard = ({ courseInfo, handleCart, isAdmin, isInstructor }) => {
             <button
               onClick={() => handleCart(courseInfo)}
               className="btn btn-sm btn-primary"
-              disabled={isInstructor || isAdmin}
+              disabled={
+                isInstructor ||
+                isAdmin ||
+                courseInfo?.available_seats == 0 ||
+                cardLoading
+              }
             >
               Enroll Now
             </button>

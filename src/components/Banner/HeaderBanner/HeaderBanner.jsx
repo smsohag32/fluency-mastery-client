@@ -55,7 +55,7 @@ const HeaderBanner = () => {
                     {slid.title}
                   </h1>
                   <p className="opacity-70 mt-2 mb-8">{slid.description}</p>
-                  <Link to="/" className="btn btn-accent">
+                  <Link to="/courses" className="btn btn-info">
                     Enroll Now
                   </Link>
                 </div>

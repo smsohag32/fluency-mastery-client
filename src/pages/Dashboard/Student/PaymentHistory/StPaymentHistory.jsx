@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import PageTitle from "../../../../components/PageTitle/PageTitle";
 import Spinner from "../../../../components/Spinner/Spinner";
 import { useAuth } from "../../../../hooks/useAuth";
@@ -14,6 +15,9 @@ const StPaymentHistory = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>FluencyMastery | Payment History</title>
+      </Helmet>
       <PageTitle
         subTitle={`Hi! ${user?.displayName}`}
         title="Your Payment History"

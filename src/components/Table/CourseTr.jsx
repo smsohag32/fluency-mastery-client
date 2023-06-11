@@ -6,7 +6,7 @@ const CourseTr = ({
   setIsOpen,
 }) => {
   return (
-    <tr className="text-xs">
+    <tr className="text-xs border-b-white">
       <td>{index + 1}</td>
       <td>
         {course?.course_image ? (
@@ -22,7 +22,7 @@ const CourseTr = ({
       <td>{course?.course_name}</td>
       <td>{course?.instructor_name}</td>
       <td className="text-xs">{course?.instructor_email}</td>
-      <td>{course?.instructor_available_seats || 0}</td>
+      <td>{course?.available_seats || 0}</td>
       <td>$ {course?.price || 0}</td>
       <td className={`${course?.status === "approved" ? "text-success" : ""}`}>
         {course?.status || "pending"}
@@ -33,7 +33,7 @@ const CourseTr = ({
           <button
             disabled={course?.status === "approved"}
             onClick={() => handleApprove(course?._id)}
-            className="btn btn-xs btn-success"
+            className="btn btn-xs btn-info"
           >
             Approve
           </button>

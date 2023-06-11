@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import InstructorCard from "../../components/Card/InstructorCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import Spinner from "../../components/Spinner/Spinner";
@@ -11,6 +12,9 @@ const Instructors = () => {
   }
   return (
     <div className="py-12">
+      <Helmet>
+        <title>FluencyMastery | Instructors</title>
+      </Helmet>
       <SectionTitle
         title="Meet Our Expert Instructor"
         subTitle="Instructors Who Make Learning Fun"

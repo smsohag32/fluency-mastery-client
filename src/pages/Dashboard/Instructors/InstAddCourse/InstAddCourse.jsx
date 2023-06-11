@@ -6,6 +6,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import IconSpin from "../../../../components/Spinner/IconSpin";
+import { Helmet } from "react-helmet";
 
 const InstAddCourse = () => {
   const { user } = useAuth();
@@ -60,6 +61,9 @@ const InstAddCourse = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>FluencyMastery | Add Courses</title>
+      </Helmet>
       <PageTitle
         title="Add a new courses"
         subTitle="Share Your Knowledge with Passion"
