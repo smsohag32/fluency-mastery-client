@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
 
       if (loggedUser?.email) {
         axios
-          .post("http://localhost:5000/jwt", {
+          .post("https://fluencymastery-server.vercel.app/jwt", {
             email: loggedUser.email,
           })
           .then((data) => {
@@ -79,7 +79,6 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
           })
           .catch((err) => {
-            console.log(err);
             setLoading(false);
           });
       } else {

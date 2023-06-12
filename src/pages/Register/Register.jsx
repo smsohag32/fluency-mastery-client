@@ -27,7 +27,6 @@ const Register = () => {
 
   // handle login
   const onSubmit = (data) => {
-    console.log(data);
     const name = data.name;
     const email = data.email;
     const password = data.password;

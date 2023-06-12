@@ -9,7 +9,9 @@ const useInstructors = () => {
   } = useQuery({
     queryKey: ["courses"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/users/instructors");
+      const res = await axios.get(
+        "https://fluencymastery-server.vercel.app/users/instructors"
+      );
       return res.data;
     },
   });

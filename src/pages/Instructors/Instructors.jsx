@@ -11,7 +11,7 @@ const Instructors = () => {
     return <Spinner />;
   }
   return (
-    <div className="py-12">
+    <div className="py-12 mb-12">
       <Helmet>
         <title>FluencyMastery | Instructors</title>
       </Helmet>

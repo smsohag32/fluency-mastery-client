@@ -26,7 +26,6 @@ const ManageUsers = () => {
     },
   });
 
-  console.log(users);
   if (usersLoading) {
     return <Spinner />;
   }
@@ -43,7 +42,6 @@ const ManageUsers = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.patch(`/users/${email}`, { role: "admin" }).then((data) => {
-          console.log(data);
           if (data?.data?.modifiedCount) {
             toast.success("User Make Admin Successful");
             refetch();
@@ -68,7 +66,6 @@ const ManageUsers = () => {
         axiosSecure
           .patch(`/users/${email}`, { role: "instructor" })
           .then((data) => {
-            console.log(data);
             if (data?.data?.modifiedCount) {
               toast.success("Make instructor successful");
               refetch();

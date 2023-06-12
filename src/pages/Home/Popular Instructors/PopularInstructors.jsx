@@ -9,7 +9,7 @@ const PopularInstructors = () => {
     queryKey: ["instructors"],
     queryFn: async () => {
       const res = await axios.get(
-        "http://localhost:5000/users/instructors/popular"
+        "https://fluencymastery-server.vercel.app/users/instructors/popular"
       );
       return res.data;
     },

@@ -2,7 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 const FeedbackModal = ({ handleDenied, closeModal, isOpen, course }) => {
   const [message, setMessage] = useState("");
-  console.log(message);
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -58,7 +58,7 @@ const FeedbackModal = ({ handleDenied, closeModal, isOpen, course }) => {
                     className="inline-flex justify-center rounded-md btn btn-sm btn-warning"
                     onClick={() => handleDenied(course?._id, message)}
                   >
-                    Feedback
+                    Denied Feedback
                   </button>
                   <button
                     type="button"

@@ -4,7 +4,7 @@ FluencyMastery is a web application that focuses on language learning and offers
 
 ## Live Website
 
-Visit the [FluencyMastery Live Website]() to experience the application firsthand.
+Visit the [FluencyMastery Live Website](https://fluencymastery-849ec.web.app/) to experience the application firsthand.
 
 ## Features
 

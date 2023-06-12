@@ -44,7 +44,6 @@ const InstAddCourse = () => {
         axiosSecure
           .post("/courses", newCourse)
           .then((res) => {
-            console.log(res.data.insertedId);
             if (res.data.insertedId) {
               setLoading(false);
               toast.success("Your new course added successful!");
@@ -176,7 +175,7 @@ const InstAddCourse = () => {
             </div>
           </div>
           <div className="form-control mt-8">
-            <button className="btn btn-sm w-1/2 btn-success">
+            <button className="btn btn-sm w-1/2 btn-info">
               {loading ? <IconSpin /> : "Create"}
             </button>
           </div>

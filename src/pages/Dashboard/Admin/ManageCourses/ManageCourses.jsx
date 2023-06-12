@@ -34,7 +34,6 @@ const ManageCourses = () => {
         axiosSecure
           .patch(`/courses/${id}`, { status: "approved" })
           .then((data) => {
-            console.log(data);
             if (data?.data?.modifiedCount) {
               toast.success("Approved successful");
               refetch();
@@ -54,12 +53,10 @@ const ManageCourses = () => {
       axiosSecure
         .patch(`/courses/feedback/${id}`, { message })
         .then((res) => {
-          console.log(res);
           if (res?.data?.modifiedCount) {
             axiosSecure
               .patch(`/courses/${id}`, { status: "denied" })
               .then((data) => {
-                console.log(data);
                 if (data?.data?.modifiedCount) {
                   toast.success("Course Denied Successful");
                   refetch();

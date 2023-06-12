@@ -61,7 +61,7 @@ const InstCourses = () => {
                   <tr key={index}>
                     <th>{index + 1}</th>
                     <td>{course?.course_name}</td>
-                    <td>{(course?.enroll && course.enroll) || 0}</td>
+                    <td>{(course?.enroll && course?.enroll) || 0}</td>
                     <td className="">
                       {course?.status ? course?.status : <span>pending</span>}
                     </td>

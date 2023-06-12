@@ -34,10 +34,9 @@ const Courses = () => {
 
     if (user?.email) {
       axiosSecure.post("/carts", newCart).then((res) => {
-        console.log(res.data);
         toast.success("Course Add to Cart Success");
         setCardLoading(false);
-        console.log(res);
+
         if (res.data.insertedId) {
           navigate(`/dashboard/payment/${res?.data?.insertedId}`);
         }

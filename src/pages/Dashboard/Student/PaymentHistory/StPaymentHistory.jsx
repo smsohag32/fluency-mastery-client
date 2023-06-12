@@ -8,8 +8,6 @@ const StPaymentHistory = () => {
   const { user } = useAuth();
   const { paymentHistory, paymentLoading } = usePaymentHistory();
 
-  console.log(paymentHistory);
-
   if (paymentLoading) {
     return <Spinner />;
   }

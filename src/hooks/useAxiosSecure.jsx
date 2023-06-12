@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 // base url
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "https://fluencymastery-server.vercel.app/",
 });
 
 // access token send to server and secure to apis

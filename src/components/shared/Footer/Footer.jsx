@@ -1,3 +1,4 @@
+import { Slide } from "react-reveal";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -6,9 +7,11 @@ const Footer = () => {
       <div className=" default-container px-4">
         <div className="flex flex-wrap items-center justify-between">
           <div className="w-full md:w-1/3 text-center md:text-left">
-            <h2 className="text-lg text-info font-semibold">
-              <span className="text-white">Fluency</span>Mastery
-            </h2>
+            <Slide right>
+              <h2 className="text-lg text-info font-semibold">
+                <span className="text-white">Fluency</span>Mastery
+              </h2>
+            </Slide>
             <p className="text-gray-400 mt-2">Learn languages with ease.</p>
             <p className="text-gray-400">1234 Main Street, City, Country</p>
           </div>

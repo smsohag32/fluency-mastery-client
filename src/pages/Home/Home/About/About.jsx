@@ -1,5 +1,6 @@
 import bg from "../../../../assets/bg/world.svg";
 import { toast } from "react-toastify";
+import { Fade } from "react-reveal";
 const About = () => {
   // handle message send
   const handleSendMessage = (e) => {
@@ -37,44 +38,48 @@ const About = () => {
           <p className="font-bold text-lg">
             You can contact us through the following methods:
           </p>
-          <ul>
-            <li>Phone: +1-123-456-7890</li>
-            <li>Email: info@fluencymastery.com</li>
-            <li>Address: 1234 Main Street, City, Country</li>
-          </ul>
+          <Fade left>
+            <ul>
+              <li>Phone: +1-123-456-7890</li>
+              <li>Email: info@fluencymastery.com</li>
+              <li>Address: 1234 Main Street, City, Country</li>
+            </ul>
+          </Fade>
         </div>
-        <div className="w-full flex flex-col">
-          <form
-            onSubmit={handleSendMessage}
-            className="bg-[#2b0d3f] bg-opacity-60 flex rounded-md flex-col gap-3 backdrop-blur-xl p-8 w-full"
-          >
-            <div className="w-full">
-              <input
-                type="text"
-                name="name"
-                className="input w-full input-border"
-                placeholder="Enter your name"
-                required
-              />
-            </div>
-            <div>
-              <textarea
-                className="textarea w-full textarea-bordered"
-                name="message"
-                id=""
-                cols="30"
-                placeholder="Enter your message"
-                rows="5"
-                required
-              ></textarea>
-            </div>
-            <div className="w-full">
-              <button type="submit" className="btn w-full btn-sm btn-info">
-                Send Message
-              </button>
-            </div>
-          </form>
-        </div>
+        <Fade right>
+          <div className="w-full flex flex-col">
+            <form
+              onSubmit={handleSendMessage}
+              className="bg-[#2b0d3f] bg-opacity-60 flex rounded-md flex-col gap-3 backdrop-blur-xl p-8 w-full"
+            >
+              <div className="w-full">
+                <input
+                  type="text"
+                  name="name"
+                  className="input w-full input-border"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              <div>
+                <textarea
+                  className="textarea w-full textarea-bordered"
+                  name="message"
+                  id=""
+                  cols="30"
+                  placeholder="Enter your message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <div className="w-full">
+                <button type="submit" className="btn w-full btn-sm btn-info">
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </Fade>
       </div>
     </div>
   );

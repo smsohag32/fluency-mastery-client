@@ -13,7 +13,9 @@ const useCourse = () => {
     queryKey: ["courses"],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get("http://localhost:5000/courses");
+      const res = await axiosSecure.get(
+        "https://fluencymastery-server.vercel.app/courses"
+      );
       return res.data;
     },
   });

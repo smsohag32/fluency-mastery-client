@@ -16,7 +16,7 @@ const InstructorCard = ({ instructor, setHeight }) => {
           <h1 className="font-bold text-xl uppercase">{instructor?.name}</h1>
         </Slide>
         <p className="secondary-text">{instructor?.email}</p>
-        <p className="secondary-text text-sm">{instructor?.role}</p>
+        <p className="uppercase  text-xs">{instructor?.role}</p>
         <LightSpeed>
           <button
             onClick={() => toast.success("Following success")}

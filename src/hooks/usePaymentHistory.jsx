@@ -15,7 +15,7 @@ const usePaymentHistory = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/payment-history/${user?.email}`);
-      console.log(res);
+
       return res.data;
     },
   });

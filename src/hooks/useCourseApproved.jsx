@@ -9,7 +9,9 @@ const useCourseApproved = () => {
   } = useQuery({
     queryKey: ["courses"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/courses/approved");
+      const res = await axios.get(
+        "https://fluencymastery-server.vercel.app/courses/approved"
+      );
       return res.data;
     },
   });
