@@ -1,15 +1,22 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Sling } from "hamburger-react";
 import { useAuth } from "../../../hooks/useAuth";
 
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { ThemeContext } from "../../../Context/ThemeProvider";
+import { useEffect } from "react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, userLogout } = useAuth();
   const { isDarkMode, handleThemeToggle } = useContext(ThemeContext);
+  const { pathname } = useLocation() || "/";
+
+  // route change scroll position to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   // handle log out
   const handleLogout = () => {

@@ -23,7 +23,7 @@ const CourseTr = ({
       <td>{course?.instructor_name}</td>
       <td className="text-xs">{course?.instructor_email}</td>
       <td>{course?.available_seats || 0}</td>
-      <td>$ {course?.price || 0}</td>
+      <td>${course?.price || 0}</td>
       <td className={`${course?.status === "approved" ? "text-success" : ""}`}>
         {course?.status || "pending"}
       </td>

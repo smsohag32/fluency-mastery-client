@@ -1,4 +1,7 @@
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+
+// password show icon component
+
 const PasswordShow = ({ setIsShow, isShow }) => {
   return (
     <span

@@ -50,7 +50,7 @@ const HeaderBanner = () => {
           <SwiperSlide key={index} className="relative">
             <img className="" src={slid.img} />
             <div className="absolute hero-overlay top-0 left-0 right-0 bottom-0 flex items-center bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.9)] justify-center">
-              <div className="default-container text-center md:text-left text-white">
+              <div className="default-container px-8 md:px-4 lg:px-4 text-center lg:text-left text-white">
                 <div className="md:max-w-xl">
                   <Fade left>
                     <h1 className="text-2xl md:text-3xl font-bold uppercase">

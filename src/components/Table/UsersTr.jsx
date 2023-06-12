@@ -21,7 +21,7 @@ const UsersTr = ({
       </td>
       <td>{singleUser?.name}</td>
       <td>{singleUser?.email}</td>
-      <td>{singleUser?.role}</td>
+      <td>{singleUser?.role || "student"}</td>
       <td>
         <div className="flex flex-col gap-4">
           <button
