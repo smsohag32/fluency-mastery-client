@@ -52,10 +52,11 @@ const DashboardLayout = () => {
               <AiOutlineMenuFold size={40} className="" />
             </label>
           </div>
-
           {/* content */}
           <Outlet />
         </div>
+
+        {/* side bar */}
         <div className="drawer-side">
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             <div className="md:hidden text-right flex items-end justify-end">

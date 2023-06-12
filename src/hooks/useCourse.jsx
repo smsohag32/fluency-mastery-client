@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 import { useAuth } from "./useAuth";
 
+// all courses access in only admin
+
 const useCourse = () => {
   const { axiosSecure } = useAxiosSecure();
   const { loading } = useAuth();

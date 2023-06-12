@@ -93,7 +93,7 @@ const Checkout = ({ amount, paymentCourse }) => {
 
   return (
     <form
-      className="w-3/4 p-10 mx-auto flex- items-center justify-center"
+      className="md:w-3/4 p-10 mx-auto flex- items-center justify-center"
       onSubmit={handleSubmit}
     >
       <CardElement

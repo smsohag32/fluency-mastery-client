@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
 
+// instructor role find in db
 const useInstructorRole = () => {
   const { loading, user } = useAuth();
   const { axiosSecure } = useAxiosSecure();

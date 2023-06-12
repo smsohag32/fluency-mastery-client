@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
 
+// use admin hook use to get is admin true or false
 const useAdmin = () => {
   const { user, loading } = useAuth();
   const { axiosSecure } = useAxiosSecure();

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
+// use instructor hook can get all instructors in db
 const useInstructors = () => {
   const {
     data: instructors = [],

@@ -46,6 +46,8 @@ const Courses = () => {
       setCardLoading(false);
     }
   };
+
+  // loading handle
   if (courseLoading) {
     return <Spinner />;
   }

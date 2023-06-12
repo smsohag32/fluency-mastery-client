@@ -13,7 +13,6 @@ const Payment = () => {
   const paymentCourse = selectedCourses?.find((course) => course._id === id);
 
   const amount = paymentCourse?.price;
-  console.log(amount);
 
   // stipe Promise
   const stripePromise = loadStripe(import.meta.env.VITE_PUBLISHABLE_KEY);
@@ -43,7 +42,7 @@ const Payment = () => {
             Course Price: ${paymentCourse?.price}
           </h1>
         </div>
-        <div className="flex bg-slate-600 rounded-xl my-8  w-3/4 mx-auto items-center justify-center">
+        <div className="flex bg-slate-600 rounded-xl md:my-8  md:w-3/4 mx-auto items-center justify-center">
           <Elements stripe={stripePromise}>
             <Checkout amount={amount} paymentCourse={paymentCourse} />
           </Elements>

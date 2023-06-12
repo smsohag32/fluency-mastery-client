@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
+// get data in only approved courses
 const useCourseApproved = () => {
   const {
     data: courses = [],

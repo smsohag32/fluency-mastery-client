@@ -2,6 +2,7 @@ import { useAuth } from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
+// get user payment history
 const usePaymentHistory = () => {
   const { axiosSecure } = useAxiosSecure();
   const { user, loading } = useAuth();
