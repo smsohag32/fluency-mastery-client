@@ -69,7 +69,19 @@ const Login = () => {
             <h1 className="text-xl md:text-2xl font-bold text-black opacity-70 leading-tight mt-12">
               Log in to your account
             </h1>
-
+            <p className="text-xs mt-2 text-black">Demo account:</p>
+            <p className="text-xs">
+              admin: <span className="text-black"> sohag2@gmail </span>
+              <span className="">
+                password: <span className="text-black"> Sohag1234@</span>
+              </span>
+            </p>
+            <p className="text-xs">
+              instructor: <span className="text-black"> sohag3@gmail </span>
+              <span className="">
+                password: <span className="text-black"> Sohag1234@</span>
+              </span>
+            </p>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="mt-6"
