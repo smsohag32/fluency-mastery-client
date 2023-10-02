@@ -18,6 +18,7 @@ import useAdmin from "../hooks/useAdmin";
 import useInstructorRole from "../hooks/useInstructorRole";
 import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
+import TopBar from "../components/shared/Header/TopBar";
 const DashboardLayout = () => {
   const [isStudent, setIsStudent] = useState(true);
   const { isAdmin } = useAdmin();
@@ -40,25 +41,19 @@ const DashboardLayout = () => {
   };
   return (
     <div>
+      <TopBar />
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content p-6">
+        <div className="drawer-content">
           {/* button side bar  */}
-          <div className="md:hidden mb-2">
-            <label
-              htmlFor="my-drawer-2"
-              className="drawer-overlay cursor-pointer"
-            >
-              <AiOutlineMenuFold size={40} className="" />
-            </label>
-          </div>
 
+          <div></div>
           <Outlet />
         </div>
 
         {/* side bar */}
-        <div className="drawer-side ">
-          <ul className="menu p-4 w-60 bg-base-200 leading-10 overflow-y-scroll text-base-content">
+        <div className="drawer-side bg-green-200">
+          <ul className="menu p-4 w-60 bg-green-200  leading-10 overflow-y-scroll text-base-content">
             <div className="md:hidden text-right flex items-end justify-end">
               <label
                 htmlFor="my-drawer-2"

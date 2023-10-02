@@ -88,7 +88,7 @@ const ManageCourses = () => {
         title="Course Management"
         subTitle="Empowering You to Shape the Learning Experience"
       ></PageTitle>
-      <div className="overflow-x-auto table-container w-full mx-auto overflow-scroll md:max-w-[1000px] ">
+      <div className=" table-container w-full mx-auto overflow-x-scroll ">
         <table className="table">
           {/* head */}
           <thead className="bg-base-200 font-bold">
