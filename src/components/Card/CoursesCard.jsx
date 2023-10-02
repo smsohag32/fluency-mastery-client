@@ -1,6 +1,4 @@
 import { Fade, Flip, Zoom } from "react-reveal";
-import { Link } from "react-router-dom";
-
 const CoursesCard = ({
   courseInfo,
   cardLoading,
@@ -9,7 +7,7 @@ const CoursesCard = ({
   isInstructor,
 }) => {
   return (
-    <div className="shadow-xl w-full border-b-2 rounded-xl group duration-1000 overflow-hidden">
+    <div className="shadow-xl w-full border-b-2 border-gray-300 group duration-1000 overflow-hidden">
       <div className="card w-full h-full">
         <div className="relative min-h-[40%]  object-contain overflow-hidden bg-cover bg-no-repeat">
           <Zoom>
@@ -40,26 +38,26 @@ const CoursesCard = ({
           </div>
           <div className="flex items-center justify-between">
             <p className="text-lg text-warning">
-              <span className="text-info text-sm mr-1">Available Seats: </span>
+              <span className="text-primary text-sm mr-1">
+                Available Seats:
+              </span>
               {courseInfo?.available_seats}
             </p>
           </div>
-          <Fade right>
-            <div className="w-full mt-6 flex justify-end">
-              <button
-                onClick={() => handleCart(courseInfo)}
-                className="btn w-full btn-sm btn-info"
-                disabled={
-                  isInstructor ||
-                  isAdmin ||
-                  courseInfo?.available_seats == 0 ||
-                  cardLoading
-                }
-              >
-                Enroll Now
-              </button>
-            </div>
-          </Fade>
+          <div className="w-full mt-6 flex justify-end">
+            <button
+              onClick={() => handleCart(courseInfo)}
+              className=" w-full primary-btn text-white uppercase"
+              disabled={
+                isInstructor ||
+                isAdmin ||
+                courseInfo?.available_seats == 0 ||
+                cardLoading
+              }
+            >
+              Enroll Now
+            </button>
+          </div>
         </div>
       </div>
     </div>

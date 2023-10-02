@@ -9,7 +9,7 @@ const ThemeProvider = ({ children }) => {
   useEffect(() => {
     document.documentElement.setAttribute(
       "data-theme",
-      isDarkMode ? "dark" : "light"
+      isDarkMode ? "light" : "dark"
     );
   }, [isDarkMode]);
 

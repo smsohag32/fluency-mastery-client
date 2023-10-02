@@ -13,7 +13,7 @@ const Instructors = () => {
   return (
     <div className="py-12 mb-12">
       <Helmet>
-        <title>FluencyMastery | Instructors</title>
+        <title>Instructors | Fluency</title>
       </Helmet>
       <SectionTitle
         title="Meet Our Expert Instructor"

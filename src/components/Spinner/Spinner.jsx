@@ -1,19 +1,17 @@
-import { CirclesWithBar } from "react-loader-spinner";
+import { CirclesWithBar, Watch } from "react-loader-spinner";
 
 const Spinner = () => {
   return (
-    <div className="w-full flex justify-center items-center min-h-[calc(100vh-250px)]">
-      <CirclesWithBar
-        height="100"
-        width="100"
-        color="#4fa94d"
+    <div className="w-full flex justify-center items-center min-h-[calc(100vh-80px)]">
+      <Watch
+        height="80"
+        width="80"
+        radius="48"
+        color="#30a538"
+        ariaLabel="watch-loading"
         wrapperStyle={{}}
-        wrapperClass=""
+        wrapperClassName=""
         visible={true}
-        outerCircleColor=""
-        innerCircleColor=""
-        barColor=""
-        ariaLabel="circles-with-bar-loading"
       />
     </div>
   );

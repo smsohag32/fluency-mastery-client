@@ -13,7 +13,7 @@ const ErrorPage = () => {
             {error.message || `something went wrong`}
           </p>
           <p className="text-3xl font-bold mt-1">{status || "404"}</p>
-          <Link className="btn btn-accent mt-8" to="/">
+          <Link className="btn primary-btn mt-8" to="/">
             Back to Home
           </Link>
         </div>

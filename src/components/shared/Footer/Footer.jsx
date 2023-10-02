@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-wrap items-center justify-between">
           <div className="w-full md:w-1/3 text-center md:text-left">
             <Slide right>
-              <h2 className="text-lg text-info font-semibold">
+              <h2 className="text-lg text-primary font-semibold">
                 <span className="text-white">Fluency</span>Mastery
               </h2>
             </Slide>

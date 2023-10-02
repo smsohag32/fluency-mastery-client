@@ -188,7 +188,7 @@ const Register = () => {
 
               <button
                 type="submit"
-                className="w-full block btn-accent  focus: text-white font-semibold rounded-lg
+                className="w-full block primary-btn  focus: text-white font-semibold rounded-lg
               px-4 py-3 mt-6"
               >
                 {loading ? <IconSpin /> : "Register"}

@@ -61,7 +61,7 @@ const InstAddCourse = () => {
   return (
     <div>
       <Helmet>
-        <title>FluencyMastery | Add Courses</title>
+        <title> Add Courses | Fluency</title>
       </Helmet>
       <PageTitle
         title="Add a new courses"
@@ -175,7 +175,7 @@ const InstAddCourse = () => {
             </div>
           </div>
           <div className="form-control mt-8">
-            <button className="btn btn-sm w-1/2 btn-info">
+            <button className="btn btn-sm w-1/2 primary-btn">
               {loading ? <IconSpin /> : "Create"}
             </button>
           </div>

@@ -11,12 +11,9 @@ const DashboardHome = () => {
       </Helmet>
       <div className="flex flex-col gap-8">
         <div className="text-center mt-12 w-full">
-          <h1 className="text-3xl uppercase font-bold text-info">
+          <h1 className="text-3xl uppercase font-bold text-primary">
             Welcome !! {user?.displayName}
           </h1>
-        </div>
-        <div className="w-full h-[480px]">
-          <Lottie className="h-full" animationData={dashboard} loop={true} />
         </div>
       </div>
     </>

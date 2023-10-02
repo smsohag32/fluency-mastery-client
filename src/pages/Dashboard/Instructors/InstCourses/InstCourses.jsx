@@ -37,7 +37,7 @@ const InstCourses = () => {
       <PageTitle title="My All courses" subTitle="Result Your Courses" />
       <div>
         <div className="mb-4">
-          <Link to="/dashboard/add-courses" className="btn btn-xs btn-info">
+          <Link to="/dashboard/add-courses" className="btn btn-xs primary-btn">
             Add a new Class
           </Link>
         </div>

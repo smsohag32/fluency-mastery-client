@@ -21,12 +21,12 @@
 .StripeElementFpx {
   display: block;
   margin: 10px 0 20px 0;
-  max-width: 500px;
+ width: 100%;
   padding: 10px 14px;
   box-shadow: rgba(83, 83, 99, 0.149) 0px 1px 3px,
     rgba(112, 109, 109, 0.02) 0px 1px 0px;
   border-radius: 4px;
-  background: rgb(1, 30, 30);
+  background: rgba(1, 39, 39, 0.829);
   color: rgb(239, 236, 236);
 }
 

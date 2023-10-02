@@ -100,7 +100,7 @@ const ManageUsers = () => {
   return (
     <div>
       <Helmet>
-        <title>FluencyMastery | Manage Users</title>
+        <title>Manage Users | Fluency</title>
       </Helmet>
       <PageTitle title="Manage Users" subTitle="Look forward"></PageTitle>
       <div className="overflow-x-auto">

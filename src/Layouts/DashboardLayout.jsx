@@ -52,13 +52,13 @@ const DashboardLayout = () => {
               <AiOutlineMenuFold size={40} className="" />
             </label>
           </div>
-          {/* content */}
+
           <Outlet />
         </div>
 
         {/* side bar */}
-        <div className="drawer-side">
-          <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+        <div className="drawer-side ">
+          <ul className="menu p-4 w-60 bg-base-200 leading-10 overflow-y-scroll text-base-content">
             <div className="md:hidden text-right flex items-end justify-end">
               <label
                 htmlFor="my-drawer-2"
@@ -191,22 +191,24 @@ const DashboardLayout = () => {
                 </li>
               </>
             )}
-            <div className="flex flex-col gap-5 text-left">
-              <div className="divider"></div>
-              <Link
-                className="font-bold flex hover:text-info transition ease-in duration-150 items-center w-5/6 mx-auto"
-                to="/"
-              >
-                <FaHome className="text-xl mr-3" /> Back To Home
-              </Link>
-            </div>
-            <div className="mt-auto w-5/6 mx-auto">
-              <button
-                onClick={handleLogout}
-                className=" flex text-base transition ease-in duration-900 items-center gap-2 font-bold hover:text-stone-500"
-              >
-                <BiLogOut size={30} /> Logout
-              </button>
+            <div className="leading ">
+              <div className="flex flex-col gap-5 text-left">
+                <div className="divider"></div>
+                <Link
+                  className="font-bold flex hover:text-[#3eb466] transition ease-in duration-150 items-center w-5/6 mx-auto"
+                  to="/"
+                >
+                  <FaHome className="text-xl mr-3" /> Back To Home
+                </Link>
+              </div>
+              <div className="mt-4 w-5/6 mx-auto">
+                <button
+                  onClick={handleLogout}
+                  className=" flex text-base transition ease-in duration-900 items-center gap-2 font-bold hover:text-stone-500"
+                >
+                  <BiLogOut size={30} /> Logout
+                </button>
+              </div>
             </div>
           </ul>
         </div>

@@ -82,7 +82,7 @@ const ManageCourses = () => {
   return (
     <div>
       <Helmet>
-        <title>FluencyMastery | Manage Courses</title>
+        <title>Manage Courses | Fluency</title>
       </Helmet>
       <PageTitle
         title="Course Management"

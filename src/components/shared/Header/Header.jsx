@@ -2,7 +2,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Sling } from "hamburger-react";
 import { useAuth } from "../../../hooks/useAuth";
-
+import image from "/logo.png";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { ThemeContext } from "../../../Context/ThemeProvider";
 import { useEffect } from "react";
@@ -23,15 +23,23 @@ const Header = () => {
     userLogout();
   };
   return (
-    <div className="bg-base-200 bg-opacity-90 z-40 fixed top-0 backdrop-blur-2xl left-0 right-0">
-      <div className="navbar relative px-5 default-container">
+    <div
+      className={`${
+        isDarkMode ? "bg-white text-black" : "bg-black text-white"
+      } bg-opacity-90 z-40 fixed top-0 shadow-md backdrop-blur-2xl left-0 right-0`}
+    >
+      <div className="navbar  relative px-5 default-container">
         <div className="flex-1">
-          <Link to="/" className="text-xl uppercase font-bold">
-            <span className="text-info">Fluency</span>Mastery
+          <Link
+            to="/"
+            className="text-lg flex items-center md:text-xl uppercase font-bold"
+          >
+            <span className="text-3xl">F</span>
+            <img src={image} alt="" className="w-9" />
           </Link>
         </div>
         <ul
-          className={`flex flex-col md:flex-row md:bg-transparent md:py-0 top-[80px] duration-500 transform h-[calc(100vh-70px)] w-4/6 md:w-auto right-2/3 md:h-auto absolute md:static gap-5 md:mr-10 ${
+          className={`flex flex-col md:flex-row md:bg-transparent md:py-0 top-[80px] duration-500 transform h-[calc(100vh-70px)] w-full md:w-auto right-0 md:h-auto absolute md:static gap-5 md:mr-10 ${
             isOpen ? "bg-base-200 py-10 left-0" : "-left-full"
           }`}
         >
@@ -45,34 +53,41 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              to="/instructors"
-              className={({ isActive }) => (isActive ? "text-primary" : "")}
-            >
-              Instructors
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/courses"
               className={({ isActive }) => (isActive ? "text-primary" : "")}
             >
               Courses
             </NavLink>
           </li>
-          {user?.email && (
-            <li>
-              <NavLink
-                to="/dashboard"
-                className={({ isActive }) => (isActive ? "text-primary" : "")}
-              >
-                Dashboard
-              </NavLink>
-            </li>
-          )}
+          <li>
+            <NavLink
+              to="/instructors"
+              className={({ isActive }) => (isActive ? "text-primary" : "")}
+            >
+              Instructors
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) => (isActive ? "text-primary" : "")}
+            >
+              About us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) => (isActive ? "text-primary" : "")}
+            >
+              Contact us
+            </NavLink>
+          </li>
         </ul>
         <span
           onClick={handleThemeToggle}
-          className="mr-5 text-2xl cursor-pointer hover:text-slate-400"
+          className="mr-5 text-4xl md:text-2xl cursor-pointer hover:text-slate-400"
         >
           {isDarkMode ? <MdLightMode /> : <MdDarkMode />}
         </span>
@@ -88,14 +103,20 @@ const Header = () => {
                 tabIndex={0}
                 className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
+                {user?.email && (
+                  <li>
+                    <NavLink
+                      to="/dashboard"
+                      className={({ isActive }) =>
+                        isActive ? "text-primary" : ""
+                      }
+                    >
+                      Dashboard
+                    </NavLink>
+                  </li>
+                )}
                 <li>
-                  <a className="justify-between">Profile</a>
-                </li>
-                <li>
-                  <button
-                    onClick={handleLogout}
-                    className="btn-accent py-1 px-5"
-                  >
+                  <button onClick={handleLogout} className="py-2 px-3 ">
                     Logout
                   </button>
                 </li>
@@ -103,7 +124,7 @@ const Header = () => {
             </div>
           </div>
         ) : (
-          <Link className="btn-accent py-1 px-5" to="/login">
+          <Link className="primary-btn text-white py-1 px-5" to="/login">
             Login
           </Link>
         )}

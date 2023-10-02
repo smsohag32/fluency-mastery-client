@@ -1,4 +1,4 @@
-import bg from "../../../../assets/bg/world.svg";
+import bg from "../../../../assets/bg/tech.png";
 import { toast } from "react-toastify";
 import { Fade } from "react-reveal";
 const About = () => {
@@ -22,13 +22,13 @@ const About = () => {
           <h1 className="text-2xl md:text-3xl text-white opacity-90 font-bold">
             About us
           </h1>
-          <p className="text-info text-sm mt-1 mb-2">Contact us any query</p>
+          <p className="text-primary text-sm mt-1 mb-2">Contact us any query</p>
           <hr className="max-w-xs" />
-          <h1 className="text-lg font-bold mt-2">
+          <h1 className="text-lg font-bold leading-8 mt-2">
             Welcome to Fluency Mastery! We are a dedicated team passionate about
             helping individuals improve their language fluency.
           </h1>
-          <p>
+          <p className="leading-8">
             At Fluency Mastery, we offer a wide range of language courses
             tailored to meet the needs of learners at different proficiency
             levels. Whether you are a beginner or an advanced learner, our
@@ -50,20 +50,21 @@ const About = () => {
           <div className="w-full flex flex-col">
             <form
               onSubmit={handleSendMessage}
-              className="bg-[#2b0d3f] bg-opacity-60 flex rounded-md flex-col gap-3 backdrop-blur-xl p-8 w-full"
+              className="
+             flex rounded-md flex-col gap-3 backdrop-blur-xl p-8 w-full"
             >
               <div className="w-full">
                 <input
                   type="text"
                   name="name"
-                  className="input w-full input-border"
+                  className="input bg-gray-100 w-full input-border"
                   placeholder="Enter your name"
                   required
                 />
               </div>
               <div>
                 <textarea
-                  className="textarea w-full textarea-bordered"
+                  className="textarea w-full bg-gray-100 textarea-bordered"
                   name="message"
                   id=""
                   cols="30"
@@ -73,7 +74,7 @@ const About = () => {
                 ></textarea>
               </div>
               <div className="w-full">
-                <button type="submit" className="btn w-full btn-sm btn-info">
+                <button type="submit" className="w-full primary-btn">
                   Send Message
                 </button>
               </div>

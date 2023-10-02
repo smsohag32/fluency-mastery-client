@@ -19,6 +19,8 @@ import InstructorRoute from "./InstructorRoute";
 import ManageCourses from "../pages/Dashboard/Admin/ManageCourses/ManageCourses";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import DashboardHome from "../pages/Dashboard/Student/DashboardHome";
+import AboutUs from "../pages/AboutUs/AboutUs";
+import ContactUs from "../pages/ContactUs/ContactUs";
 
 // all routes
 const routes = createBrowserRouter([
@@ -42,6 +44,14 @@ const routes = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
       },
       {
         path: "/instructors",

@@ -1,16 +1,15 @@
-.swiper {
+.hero .swiper {
     width: 100%;
     height: 100vh;
 }
 
-.swiper-slide {
+.hero .swiper-slide {
     background-position: center;
     background-size: contain;
 }
 
-.swiper-slide img {
+.hero .swiper-slide img {
     display: block;
     width: 100%;
     height: auto;
-    
 }

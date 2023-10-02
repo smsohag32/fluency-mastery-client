@@ -36,10 +36,6 @@ const Courses = () => {
       axiosSecure.post("/carts", newCart).then((res) => {
         toast.success("Course Add to Cart Success");
         setCardLoading(false);
-
-        if (res.data.insertedId) {
-          navigate(`/dashboard/payment/${res?.data?.insertedId}`);
-        }
       });
     } else {
       navigate("/login", { state: { from: location } });
@@ -54,7 +50,7 @@ const Courses = () => {
   return (
     <>
       <Helmet>
-        <title>FluencyMastery | Courses</title>
+        <title>Courses | Fluency</title>
       </Helmet>
       <div className="py-12 default-container">
         <SectionTitle

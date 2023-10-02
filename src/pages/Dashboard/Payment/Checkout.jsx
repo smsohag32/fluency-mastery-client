@@ -93,7 +93,7 @@ const Checkout = ({ amount, paymentCourse }) => {
 
   return (
     <form
-      className="md:w-3/4 p-10 mx-auto flex- items-center justify-center"
+      className=" p-10 flex w-full flex-col items-center justify-center"
       onSubmit={handleSubmit}
     >
       <CardElement
@@ -114,12 +114,12 @@ const Checkout = ({ amount, paymentCourse }) => {
       />
       <div className="text-center">
         {cardError && <p className="text-warning">{cardError}</p>}
-        {success && <p className="text-info">{success}</p>}
+        {success && <p className="text-primary">{success}</p>}
       </div>
-      <div className="w-3/6 ms-12 pt-4">
+      <div className="ms-12">
         <button
           type="submit"
-          className="btn w-full  btn-sm btn-info"
+          className="bg-green-400 text-white px-3 rounded-sm py-1"
           disabled={!stripe || isProcessing}
         >
           Confirm Pay

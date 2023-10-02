@@ -15,7 +15,18 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <ThemeProvider>
         <RouterProvider router={routes}></RouterProvider>
-        <ToastContainer />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </ThemeProvider>
     </AuthProvider>
   </QueryClientProvider>

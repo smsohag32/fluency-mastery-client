@@ -45,9 +45,6 @@ const PopularCourses = () => {
       axiosSecure.post("/carts", newCart).then((res) => {
         toast.success("Course Add to Cart Success");
         setCardLoading(false);
-        if (res.data.insertedId) {
-          navigate(`/dashboard/payment/${res?.data?.insertedId}`);
-        }
       });
     } else {
       navigate("/login", { state: { from: location } });

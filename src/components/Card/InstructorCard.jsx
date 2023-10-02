@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { LightSpeed, Slide } from "react-reveal";
 import { toast } from "react-toastify";
 
 const InstructorCard = ({ instructor, setHeight }) => {
+  const [isFollow, setIsFollow] = useState(false);
+
   return (
     <div
       className={`hover:scale-y-105 duration-500 transform gap-2 border-x-2 w-full flex items-center ${
@@ -19,10 +22,10 @@ const InstructorCard = ({ instructor, setHeight }) => {
         <p className="uppercase  text-xs">{instructor?.role}</p>
         <LightSpeed>
           <button
-            onClick={() => toast.success("Following success")}
-            className="btn btn-secondary btn-outline btn-sm"
+            onClick={() => setIsFollow(!isFollow)}
+            className={`primary-btn ${isFollow ? "" : ""}`}
           >
-            Follow
+            {isFollow ? "Unfollow" : "Follow"}
           </button>
         </LightSpeed>
       </div>

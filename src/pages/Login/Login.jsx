@@ -65,23 +65,10 @@ const Login = () => {
           className="bg-white w-full md:max-w-md md:w-5/6  lg:max-w-full md:mx-auto  h-full px-6 lg:px-16 xl:px-12
         flex items-center justify-center"
         >
-          <div className="w-full h-100">
+          <div className="w-full h-full">
             <h1 className="text-xl md:text-2xl font-bold text-black opacity-70 leading-tight mt-12">
               Log in to your account
             </h1>
-            <p className="text-xs mt-2 text-black">Demo account:</p>
-            <p className="text-xs">
-              admin: <span className="text-black"> sohag2@gmail </span>
-              <span className="">
-                password: <span className="text-black"> Sohag1234@</span>
-              </span>
-            </p>
-            <p className="text-xs">
-              instructor: <span className="text-black"> sohag3@gmail </span>
-              <span className="">
-                password: <span className="text-black"> Sohag1234@</span>
-              </span>
-            </p>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="mt-6"
@@ -127,7 +114,7 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                className="w-full block btn-accent  focus: text-white font-semibold rounded-lg
+                className="w-full block primary-btn  focus: text-white font-semibold rounded-lg
               px-4 py-3 mt-6"
               >
                 {loading ? <IconSpin /> : "Login"}
@@ -140,6 +127,10 @@ const Login = () => {
                 </p>
               </div>
             )}
+            <p className="bg-white px-5 py-2 mt-2 border-gray-200 border text-gray-500 text-xs">
+              Demo: Admin-email: sohagsm@gmail.com
+              <span className="block">Password: 1234Sohag@</span>
+            </p>
             <hr className="my-6 border-gray-300 w-full" />
 
             <SocialLogin />

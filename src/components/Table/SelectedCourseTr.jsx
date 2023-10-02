@@ -14,7 +14,7 @@ const SelectedCourseTr = ({ course, index, handleDelete }) => {
         <div className="flex flex-col gap-4">
           <Link
             to={`/dashboard/payment/${course?._id}`}
-            className="btn btn-xs btn-info"
+            className=" btn btn-xs btn-success"
           >
             Pay
           </Link>

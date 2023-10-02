@@ -27,14 +27,14 @@ const UsersTr = ({
           <button
             disabled={singleUser?.role === "admin"}
             onClick={() => handleMakeAdmin(singleUser?.email)}
-            className="btn btn-xs btn-info"
+            className="btn btn-xs primary-btn"
           >
             Make Admin
           </button>
           <button
             disabled={singleUser?.role === "instructor"}
             onClick={() => handleMakeInstructor(singleUser?.email)}
-            className="btn btn-xs btn-info"
+            className="btn btn-xs primary-btn"
           >
             Make Instructor
           </button>
