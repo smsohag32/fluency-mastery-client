@@ -28,3 +28,6 @@ html{
 .primary-btn{
   @apply px-4 py-2 text-lg font-semibold tracking-widest bg-[#30a538] hover:bg-[#40b448] text-white rounded-sm
 }
+.secondary-btn{
+  @apply px-5 py-1 rounded-3xl text-lg font-semibold tracking-widest bg-[#30a538] hover:bg-[#40b448] text-white 
+}

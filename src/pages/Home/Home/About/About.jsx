@@ -38,13 +38,11 @@ const About = () => {
           <p className="font-bold text-lg">
             You can contact us through the following methods:
           </p>
-          <Fade left>
-            <ul>
-              <li>Phone: +1-123-456-7890</li>
-              <li>Email: info@fluencymastery.com</li>
-              <li>Address: 1234 Main Street, City, Country</li>
-            </ul>
-          </Fade>
+          <ul>
+            <li>Phone: +1-123-456-7890</li>
+            <li>Email: info@fluencymastery.com</li>
+            <li>Address: 1234 Main Street, City, Country</li>
+          </ul>
         </div>
         <Fade right>
           <div className="w-full flex flex-col">

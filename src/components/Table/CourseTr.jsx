@@ -33,7 +33,7 @@ const CourseTr = ({
           <button
             disabled={course?.status === "approved"}
             onClick={() => handleApprove(course?._id)}
-            className="btn btn-xs primary-btn"
+            className="secondary-btn"
           >
             Approve
           </button>

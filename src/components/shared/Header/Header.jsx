@@ -124,7 +124,7 @@ const Header = () => {
             </div>
           </div>
         ) : (
-          <Link className="primary-btn text-white py-1 px-5" to="/login">
+          <Link className="secondary-btn" to="/login">
             Login
           </Link>
         )}

@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { LightSpeed, Slide } from "react-reveal";
-import { toast } from "react-toastify";
-
 const InstructorCard = ({ instructor, setHeight }) => {
   const [isFollow, setIsFollow] = useState(false);
 
