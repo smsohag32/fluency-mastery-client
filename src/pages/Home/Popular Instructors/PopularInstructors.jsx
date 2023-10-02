@@ -16,7 +16,7 @@ const PopularInstructors = () => {
   });
 
   return (
-    <section className="mb-20">
+    <section className="mb-10">
       <SectionTitle
         subTitle="Limitless learning, more possibilities"
         title="Popular Instructors"

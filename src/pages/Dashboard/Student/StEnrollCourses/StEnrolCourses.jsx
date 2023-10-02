@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import PageTitle from "../../../../components/PageTitle/PageTitle";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useAuth } from "../../../../hooks/useAuth";
-import Spinner from "../../../../components/Spinner/Spinner";
+import SingleEnroll from "./SingleEnroll";
 
 const StEnrolCourses = () => {
   const { axiosSecure } = useAxiosSecure();
@@ -20,8 +20,9 @@ const StEnrolCourses = () => {
 
   // handle loading
   if (courseLoading) {
-    return <Spinner />;
+    return;
   }
+
   return (
     <div>
       <PageTitle title="Complete Enroll Courses" subTitle="Success"></PageTitle>
@@ -34,19 +35,18 @@ const StEnrolCourses = () => {
               <th>Photo</th>
               <th>Course</th>
               <th>Instructor</th>
-              <th>Price</th>
+              <th>Enroll Date</th>
             </tr>
           </thead>
           <tbody>
             {enrollCourses?.length > 0 &&
               enrollCourses?.map((course, index) => (
-                <tr key={course?._id}>
-                  <th>{index + 1}</th>
-                  <td>{course?.course_image}</td>
-                  <td>{course?.course_name}</td>
-                  <td>{course?.instructor_name}</td>
-                  <td>{course?.price}</td>
-                </tr>
+                <SingleEnroll
+                  key={index}
+                  course={course}
+                  index={index}
+                  courseLoading={courseLoading}
+                />
               ))}
           </tbody>
         </table>

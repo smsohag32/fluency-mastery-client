@@ -8,13 +8,17 @@ import "@smastrom/react-rating/style.css";
 
 import "./review.css";
 import { Pagination, Navigation } from "swiper";
-import { clientReviews } from "./clientRevieObj";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import useReviews from "../../../hooks/useReview";
 
 const StudentReview = () => {
+  const { reviews, rLoading } = useReviews();
+
+  if (rLoading) {
+    return;
+  }
   return (
-    <div className="review bg-transparent my-12">
-      <SectionTitle subTitle="What student say" title="Student Review" />
+    <div className="review bg-transparent mb-20">
       <Swiper
         pagination={{
           type: "fraction",
@@ -23,9 +27,14 @@ const StudentReview = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        {clientReviews.map((review) => (
+        {reviews.map((review) => (
           <SwiperSlide key={review.id}>
-            <div className="w-full h-[40vh] flex gap-3 items-center justify-center flex-col">
+            <div className="w-full flex gap-3 items-center justify-center flex-col">
+              <div className="avatar">
+                <div className="w-24 ring-2 ring-green-800 rounded-full">
+                  <img src={review?.img} className="object-contain" />
+                </div>
+              </div>
               <h4 className="text-2xl font-bold">{review?.name}</h4>
               <p className="">{review.comment}</p>
               <div className="flex items-center justify-between">
