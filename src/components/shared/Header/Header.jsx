@@ -34,8 +34,7 @@ const Header = () => {
             to="/"
             className="text-lg flex items-center md:text-xl uppercase font-bold"
           >
-            <span className="text-3xl">F</span>
-            <img src={image} alt="" className="w-9" />
+            <span className="text-[2rem]">Fluency</span>
           </Link>
         </div>
         <ul
@@ -124,7 +123,7 @@ const Header = () => {
             </div>
           </div>
         ) : (
-          <Link className="secondary-btn" to="/login">
+          <Link className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold" to="/login">
             Login
           </Link>
         )}
