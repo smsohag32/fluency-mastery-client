@@ -1,43 +1,15 @@
-import React, { useContext } from "react";
-import { toast } from "react-toastify";
-import { ThemeContext } from "../../Context/ThemeProvider";
-import { Helmet } from "react-helmet";
+import React from 'react';
 
-const ContactUs = () => {
-  const { isDarkMode } = useContext(ThemeContext);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    toast.success("Message send success");
-  };
-
-  return (
-    <div>
-      <Helmet>
-        <title>Contact | Fluency</title>
-      </Helmet>
-      <div
-        className={`pt-16 ${
-          isDarkMode ? "bg-base-100 text-gray-700" : "bg-black text-white"
-        } `}
-      >
-
-<div className="text-center bg-gradient-to-tr from-blue-500 via-blue-600 to-blue-700 py-12 text-white">
-            <h1 className="text-[2rem] font-semibold  mb-4">Contact Us</h1>
-            <p className="text-[1.5rem] max-w-xl text-center mx-auto">
-              We're here to assist you. Please fill out the form below to get in
-              touch with us or use the contact information provided.
-            </p>
-          </div>
-
-        <div className={`default-container py-12 px-4 `}>
+const ContactInfo = () => {
+    return (
+        <div className='bg-green-50'>
+             <div className={`default-container py-12 px-4 `}>
           <div
-            className={`mt-12 flex flex-col lg:flex-row gap-6  w-full p-6 rounded-lg  ${
-              isDarkMode ? "" : "bg-green-900"
-            }`}
+            className='mt-12 flex flex-col lg:flex-row gap-6  w-full p-6 rounded-lg'
           >
-            <div className=" w-full shadow-lg p-4">
+            <div className=" w-full bg-white shadow-lg p-4">
               <h2 className="text-[2rem] font-semibold  mb-4">
-                Contact Information
+                Get in touch.
               </h2>
               <p className="text-lg">
                 If you have urgent inquiries or prefer to reach us directly, you
@@ -58,7 +30,7 @@ const ContactUs = () => {
                 </li>
               </ul>
             </div>
-            <form className="w-full p-4 shadow-lg" onSubmit={handleSubmit}>
+            <form className="w-full p-4 bg-white shadow-lg">
               <div className="mb-4">
                 <label htmlFor="name" className="block  mb-2">
                   Your Name
@@ -109,9 +81,8 @@ const ContactUs = () => {
             </form>
           </div>
         </div>
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default ContactUs;
+export default ContactInfo;

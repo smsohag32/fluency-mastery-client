@@ -6,9 +6,12 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useAuth } from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import IconSpin from "../../../components/Spinner/IconSpin";
 
 const Checkout = ({ amount, paymentCourse }) => {
   const stripe = useStripe();
+  console.log(stripe);
   const elements = useElements();
   const { user } = useAuth();
   const { axiosSecure } = useAxiosSecure();
@@ -18,6 +21,8 @@ const Checkout = ({ amount, paymentCourse }) => {
   const [transactionId, setTransactionId] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const navigate = useNavigate();
+
+
   useEffect(() => {
     if (amount > 0) {
       axiosSecure.post("/confirm-payment", { amount }).then((res) => {
@@ -29,6 +34,16 @@ const Checkout = ({ amount, paymentCourse }) => {
   // handle payment pay
   const handleSubmit = async (event) => {
     event.preventDefault();
+    Swal.fire({
+      title: "Payment",
+      text: "Please confirm to payment.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Pay now",
+    }).then(async(result) => {
+      if (result.isConfirmed) {
     setCardError("");
     setIsProcessing(true);
     if (!stripe || !elements) {
@@ -89,13 +104,19 @@ const Checkout = ({ amount, paymentCourse }) => {
         }
       });
     }
+      }
+    });
+   
   };
 
   return (
     <form
-      className=" p-10 flex w-full flex-col items-center justify-center"
+      className=" p-10 flex w-full bg-gray-900 flex-col items-center justify-center"
       onSubmit={handleSubmit}
     >
+     
+
+      <p className="text-white">For the demo card no : <span className="text-lg font-semibold">4242 4242 4242 4242</span></p>
       <CardElement
         options={{
           style: {
@@ -117,13 +138,14 @@ const Checkout = ({ amount, paymentCourse }) => {
         {success && <p className="text-primary">{success}</p>}
       </div>
       <div className="ms-12">
-        <button
+        {isProcessing ? <IconSpin/> :   <button
           type="submit"
-          className="bg-green-400 text-white px-3 rounded-sm py-1"
+          className="bg-blue-600 text-lg font-semibold text-white px-3 rounded-sm py-1"
           disabled={!stripe || isProcessing}
         >
           Confirm Pay
-        </button>
+        </button>}
+      
       </div>
     </form>
   );

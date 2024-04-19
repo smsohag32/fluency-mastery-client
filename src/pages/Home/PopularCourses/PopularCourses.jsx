@@ -10,6 +10,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructorRole from "../../../hooks/useInstructorRole";
 import { useAuth } from "../../../hooks/useAuth";
+import useSelectedCart from "../../../hooks/useSelectedCart";
 
 const PopularCourses = () => {
   const [cardLoading, setCardLoading] = useState();
@@ -18,6 +19,7 @@ const PopularCourses = () => {
   const { user } = useAuth();
   const { isAdmin } = useAdmin();
   const { isInstructor } = useInstructorRole();
+  const {refetch}= useSelectedCart()
 
   // popular course data load in db
   const { data: popularCourses = [], isLoading } = useQuery({
@@ -29,9 +31,6 @@ const PopularCourses = () => {
       return res.data;
     },
   });
-
-
-  console.log(popularCourses);
 
   // course card handle
   const handleCart = (courseInfo) => {
@@ -48,6 +47,7 @@ const PopularCourses = () => {
       axiosSecure.post("/carts", newCart).then((res) => {
         toast.success("Course Add to Cart Success");
         setCardLoading(false);
+        refetch()
       });
     } else {
       navigate("/login", { state: { from: location } });

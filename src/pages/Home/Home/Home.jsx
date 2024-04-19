@@ -7,6 +7,7 @@ import StudentReview from "../StudentReview/StudentReview";
 import About from "./About/About";
 import { Helmet } from "react-helmet";
 import OfferBoard from "./OfferBoard/OfferBoard";
+import ContactInfo from "./ContactInfo";
 const Home = () => {
   return (
     <div>
@@ -18,7 +19,8 @@ const Home = () => {
       <OfferBoard />
       <PopularInstructors />
       <StudentReview />
-      <About />
+      {/* <About /> */}
+      <ContactInfo/>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { CirclesWithBar, RotatingLines } from "react-loader-spinner";
 
-const Spinner = () => {
+const SmallLoading = () => {
   return (
     <div className="w-full flex justify-center items-center min-h-[calc(100vh-80px)]">
       <RotatingLines
@@ -18,4 +18,4 @@ const Spinner = () => {
   );
 };
 
-export default Spinner;
+export default SmallLoading;
