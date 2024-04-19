@@ -1,7 +1,7 @@
 import bg from "../../../../assets/bg/tech.png";
 import { toast } from "react-toastify";
 import { Fade } from "react-reveal";
-const About = () => {
+const About = ({about}) => {
   // handle message send
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -15,20 +15,22 @@ const About = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
       }}
-      className="py-16"
+      className="py-16 w-full"
     >
       <div className="flex p-5 default-container px-5 flex-col md:flex-row md:items-center gap-8">
         <div className="w-full text-white text-opacity-90 space-y-2">
-          <h1 className="text-2xl md:text-3xl text-white opacity-90 font-bold">
+          {
+            !about  &&<h1 className="text-2xl md:text-3xl text-white opacity-90 font-bold">
             About us
           </h1>
+          }
       
         <div className="mt-10">
-        <h1 className="text-lg font-bold ">
-            Welcome to Fluency Mastery! We are a dedicated team passionate about
+        <h1 className="text-[24px] font-bold ">
+            Fluency Mastery! We are a dedicated team passionate about
             helping individuals improve their language fluency.
           </h1>
-          <p className="mt-4">
+          <p className="mt-4 text-lg">
             At Fluency Mastery, we offer a wide range of language courses
             tailored to meet the needs of learners at different proficiency
             levels. Whether you are a beginner or an advanced learner, our
@@ -57,15 +59,15 @@ const About = () => {
                 <input
                   type="text"
                   name="name"
-                  className="input mt-2 bg-gray-600 text-white w-full input-border"
+                  className="input mt-2 bg-green-100 text-gray-900 w-full input-border"
                   placeholder="Enter your name"
                   required
                 />
               </div>
               <div>
-              <label htmlFor="" className="text-white font-semibold text-lg">Message <span></span></label>
+              <label htmlFor="" className="text-gray-100 font-semibold text-lg">Message <span></span></label>
                 <textarea
-                  className="textarea mt-2 w-full bg-gray-600 text-white textarea-bordered"
+                  className="textarea mt-2 w-full text-lg bg-green-100 text-gray-800 textarea-bordered"
                   name="message"
                   id=""
                   cols="30"
