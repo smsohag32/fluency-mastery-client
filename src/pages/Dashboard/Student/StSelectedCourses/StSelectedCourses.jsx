@@ -10,7 +10,7 @@ import { useState } from "react";
 const StSelectedCourses = () => {
   const { selectedCourses, courseLoading, refetch } = useSelectedCart();
   const { axiosSecure } = useAxiosSecure();
-  const [searchText, setSearchText] = useState("")
+  const [searchText, setSearchText] = useState("");
   // handle Delete selected courses
   const handleDelete = (id) => {
     Swal.fire({
@@ -51,18 +51,22 @@ const StSelectedCourses = () => {
     );
   });
 
-
   return (
     <div>
       <div className="flex justify-between gap-2 flex-col lg:flex-row p-6">
-      <div className="w-full  whitespace-nowrap">
-        <p className="text-[2rem] font-semibold text-gray-700">My Cart</p>
+        <div className="w-full  whitespace-nowrap">
+          <p className="text-[2rem] font-semibold ">My Cart</p>
+        </div>
+        <div className="w-full flex items-end justify-end">
+          <input
+            onChange={(e) => setSearchText(e.target.value)}
+            type="text"
+            placeholder="Search...."
+            className="px-6 py-2 outline-none rounded-[2rem] border border-gray-200 focus:ring focus:ring-green-600"
+          />
+        </div>
       </div>
-      <div className="w-full flex items-end justify-end">
-        <input onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Search...." className="px-6 py-2 outline-none rounded-[2rem] border border-gray-200 focus:ring focus:ring-green-600" />
-      </div>
-      </div>
-      <div className="p-6 border border-gray-100">
+      <div className="p-6 ">
         <div className="overflow-auto">
           <table className="table ">
             {/* head */}

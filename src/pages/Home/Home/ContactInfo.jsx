@@ -2,12 +2,12 @@ import React from 'react';
 
 const ContactInfo = () => {
     return (
-        <div className='bg-green-50'>
+        <div className='bg-gray-200'>
              <div className={`default-container py-12 px-4 `}>
           <div
             className='mt-12 flex flex-col lg:flex-row gap-6  w-full p-6 rounded-lg'
           >
-            <div className=" w-full bg-white shadow-lg p-4">
+            <div className=" w-full bg-white text-black shadow-lg p-4">
               <h2 className="text-[2rem] font-semibold  mb-4">
                 Get in touch.
               </h2>
@@ -30,7 +30,7 @@ const ContactInfo = () => {
                 </li>
               </ul>
             </div>
-            <form className="w-full p-4 bg-white shadow-lg">
+            <form className="w-full p-4 text-black bg-white shadow-lg">
               <div className="mb-4">
                 <label htmlFor="name" className="block  mb-2">
                   Your Name

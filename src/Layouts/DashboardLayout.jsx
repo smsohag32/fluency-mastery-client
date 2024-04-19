@@ -3,7 +3,6 @@ import userIcon from "../assets/user.png"
 import {
   AiOutlineClose,
   AiOutlineFileDone,
-  AiOutlineMenuFold,
   AiOutlineSelect,
 } from "react-icons/ai";
 import {
@@ -104,7 +103,7 @@ const DashboardLayout = () => {
                       isActive ? "text-primary" : "text-white"
                     }
                   >
-                    <AiOutlineSelect /> My Selected Courses
+                    <AiOutlineSelect /> Selected Courses
                   </NavLink>
                 </li>
                 <li>
@@ -114,7 +113,7 @@ const DashboardLayout = () => {
                       isActive ? "text-primary" : " text-white"
                     }
                   >
-                    <AiOutlineFileDone /> My Enrolled Courses
+                    <AiOutlineFileDone /> Enrolled Courses
                   </NavLink>
                 </li>
                 <li>

@@ -7,7 +7,6 @@ const SingleEnroll = ({ course, index }) => {
   if (!courseId) {
     return;
   }
-  console.log(courseId);
   const { enCourse, eLoading } = useEnCourse({ courseId });
 
   if (eLoading) {
@@ -22,15 +21,15 @@ const SingleEnroll = ({ course, index }) => {
   const hours = String(originalDate.getHours()).padStart(2, "0");
   const minutes = String(originalDate.getMinutes()).padStart(2, "0");
 
-  const formattedDate = `${year}-${month}-${day} (${hours}:${minutes})`;
+  const formattedDate = `${year}-${month}-${day} - ${hours}h:${minutes}m`;
 
   return (
-    <tr key={course?._id}>
+    <tr key={course?._id} className="border-b border-gray-200">
       <th>{index + 1}</th>
       <td>
         <img src={enCourse?.course_image} className="h-32" alt="" />
       </td>
-      <td>{course?.course_name}</td>
+      <td className="text-blue-600 font-semibold text-lg cursor-pointer">{course?.course_name}</td>
       <td>{course?.instructor_name}</td>
       <td>{formattedDate}</td>
     </tr>

@@ -5,7 +5,7 @@ const InstructorCard = ({ instructor, setHeight }) => {
 
   return (
     <div
-      className={`hover:scale-y-105 h-full  bg-white text-black relative shadow-md primary-shadow flex-col rounded-xl duration-500 transform gap-2 border-x-2 w-full flex items-center ${
+      className={`hover:scale-y-105 h-full  bg-gray-100 text-black relative shadow-md primary-shadow flex-col rounded-xl duration-500 transform gap-2 border-x-2 w-full flex items-center ${
         setHeight ? setHeight : "h-full"
       }`}
     >

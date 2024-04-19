@@ -19,6 +19,8 @@
     "browser-image-compression": "^2.0.2",
     "firebase": "^9.22.1",
     "hamburger-react": "^2.5.0",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.2",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.0",
     "match-sorter": "^6.3.1",

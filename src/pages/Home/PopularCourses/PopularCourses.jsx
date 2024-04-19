@@ -64,7 +64,7 @@ const PopularCourses = () => {
         </div>
 
         <div>
-          <Link to={"/"} className="text-blue-600 font-bold text-lg px-6 py-2 border border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300">See More</Link>
+          <Link to={"/courses"} className="text-blue-600 font-bold text-lg px-6 py-2 border border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300">See More</Link>
         </div>
       </div>
       <div className="default-container">

@@ -7,7 +7,7 @@ const CoursesCard = ({
   isInstructor,
 }) => {
   return (
-    <div className="shadow-xl rounded-xl w-full text-black border-b-2 bg-white border-gray-300 group duration-1000 overflow-hidden">
+    <div className="shadow-xl rounded-xl w-full text-black border-b-2 bg-gray-100 border-gray-300 group duration-1000 overflow-hidden">
       <div className="card w-full h-full">
         <div className="relative min-h-[40%]  object-contain overflow-hidden bg-cover bg-no-repeat">
           <Zoom>
