@@ -5,9 +5,9 @@ const SectionTitle = ({ title, subTitle, center }) => {
         center && "text-center"
       }`}
     >
-      <div className={`md:max-w-xl mx-auto ${center && "mx-auto"} border-b-2`}>
+      <div className={`md:max-w-xl mx-auto ${center && "mx-auto"} `}>
         <h1 className="text-3xl md:text-5xl font-bold">{title}</h1>
-        <p className="text-primary text-lg md:text-xl mt-1 mb-2">{subTitle}</p>
+        <p className=" text-lg md:text-xl mt-1 mb-2">{subTitle}</p>
       </div>
     </div>
   );

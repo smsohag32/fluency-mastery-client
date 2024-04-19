@@ -82,6 +82,7 @@ const Login = () => {
                     required: "This Field is required *",
                   })}
                   type="email"
+                  defaultValue={"fluency24@gmail.com"}
                   name="email"
                   placeholder="Enter Email Address"
                   className="w-full px-4 py-3 text-black rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
@@ -99,6 +100,7 @@ const Login = () => {
                   {...register("password", {
                     required: "This field is required",
                   })}
+                  defaultValue={12345678}
                   type={`${isShow ? "text" : "password"}`}
                   name="password"
                   placeholder="Enter Password"

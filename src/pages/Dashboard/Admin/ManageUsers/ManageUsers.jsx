@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import axios from "axios";
 import Spinner from "../../../../components/Spinner/Spinner";
 import { useAuth } from "../../../../hooks/useAuth";
-import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import UsersTr from "../../../../components/Table/UsersTr";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";

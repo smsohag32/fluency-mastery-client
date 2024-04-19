@@ -22,7 +22,7 @@ const Instructors = () => {
       ></SectionTitle>
 
       <div className="default-container px-6 md:px-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {instructors?.length > 0 &&
             instructors.map((instructor) => (
               <InstructorCard

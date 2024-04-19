@@ -1,6 +1,4 @@
 import { useAuth } from "../../../hooks/useAuth";
-import dashboard from "../../../assets/animation/dashboard.json";
-import Lottie from "lottie-react";
 import { Helmet } from "react-helmet";
 const DashboardHome = () => {
   const { user } = useAuth();

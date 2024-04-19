@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -9,13 +8,14 @@ import IconSpin from "../../components/Spinner/IconSpin";
 import registerImage from "../../assets/login/register.svg";
 import saveUser from "../../apis/users";
 import PasswordShow from "../../components/Button/PasswordShow";
+import imageCompression from "browser-image-compression";
+import axios from "axios";
 const Register = () => {
-  const { createUser, userLogout, updateProfileInfo, loading, setLoading } =
-    useAuth();
+  const { createUser, userLogout, updateProfileInfo, loading, setLoading } = useAuth();
   const [registerError, setRegisterError] = useState("");
   const navigate = useNavigate();
+  const [photo, setPhoto] = useState("")
   const [isShow, setIsShow] = useState(false);
-  //   react hook form
   const {
     register,
     handleSubmit,
@@ -24,34 +24,70 @@ const Register = () => {
     watch,
   } = useForm();
   const password = watch("password", "");
+  const [photoUrl, setPhotoUrl] = useState(""); // State to hold base64 image data
 
-  // handle login
-  const onSubmit = (data) => {
-    const name = data.name;
-    const email = data.email;
-    const password = data.password;
-    const photo = data.photo;
+  const handleFileInputChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      try {
+        const options = {
+          maxSizeMB: 0.1,
+          maxWidthOrHeight: 400,
+          useWebWorker: true,
+        };
 
-    // create a user
+        const compressedFile = await imageCompression(file, options);
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const base64String = reader.result;
+          setPhotoUrl(base64String);
+        };
+        reader.readAsDataURL(compressedFile);
+      } catch (error) {
+        console.error("Image compression error:", error);
+      }
+    }
+  };
+
+
+  // todo 
+  const shortUrl = async () => {
+    try {
+      const response = await axios(
+        `https://api.shrtco.de/v2/shorten?url=${photoUrl}`
+      );
+      setPhoto(response.data.result.full_short_link);
+    } catch (e) {
+      console.log(e);
+    }
+
+
+  }
+
+
+
+  const onSubmit = async (data) => {
+    const { name, email, password } = data;
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
+        saveUser({...result?.user, photoUrl: photo});
         updateProfileInfo(name, photo)
           .then(() => {
-            saveUser(user);
             userLogout();
             navigate("/login");
-            toast.success(`${name} your account create successful`);
-
+            toast.success(`${name}, your account was created successfully!`);
             reset();
           })
           .catch((err) => {
+            console.log(err);
             setLoading(false);
           });
       })
       .catch((err) => {
+        console.log(err);
         if (err.message.includes("already")) {
-          setRegisterError("Your already have a account please Login");
+          setRegisterError("You already have an account. Please log in.");
           setLoading(false);
         }
       });
@@ -60,14 +96,11 @@ const Register = () => {
   return (
     <div className="bg-white py-12">
       <section className="flex default-container flex-col md:flex-row  items-center">
-        <div className=" h-full  hidden lg:block w-full ">
+        <div className="h-full hidden lg:block w-full">
           <img src={registerImage} alt="Register" />
         </div>
 
-        <div
-          className="bg-white md:max-w-md lg:max-w-full md:w-5/6 mx-auto w-full px-6 lg:px-16 xl:px-12
-        flex items-center justify-center"
-        >
+        <div className="bg-white md:max-w-md lg:max-w-full md:w-5/6 mx-auto w-full px-6 lg:px-16 xl:px-12 flex items-center justify-center">
           <div className="w-full h-full">
             <h1 className="text-xl md:text-2xl text-black opacity-70 font-bold leading-tight mt-12">
               Create your first account
@@ -100,7 +133,7 @@ const Register = () => {
                   type="email"
                   name="email"
                   placeholder="Enter Email Address"
-                  className="w-full px-4 py-3 rounded-lg text-slate-700  bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg text-slate-700 bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                   autoFocus
                 />
                 {errors?.email && (
@@ -110,22 +143,12 @@ const Register = () => {
                 )}
               </div>
               <div className="mt-4">
-                <label className="block text-gray-700">Photo URL</label>
+                <label className="block text-gray-700">Profile Photo</label>
                 <input
-                  {...register("photo", {
-                    required: "This field is required *",
-                  })}
-                  type="url"
-                  name="photo"
-                  placeholder="Enter Photo url"
-                  className="w-full px-4 py-3 text-slate-700  rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-                  autoFocus
+                  type="file"
+                  onChange={(e) => handleFileInputChange(e)}
+                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                 />
-                {errors?.photo && (
-                  <span className="text-red-600 text-sm">
-                    <small>{errors.photo?.message}</small>
-                  </span>
-                )}
               </div>
 
               <div className="mt-4 relative">
@@ -137,43 +160,16 @@ const Register = () => {
                       value: 6,
                       message: "Password must be at least 6 characters long",
                     },
-                    pattern: {
-                      value: /^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-                      message:
-                        "Password must contain at least one capital letter and one special character",
-                    },
                   })}
                   type={`${isShow ? "text" : "password"}`}
                   name="password"
                   placeholder="Enter Password"
-                  className="w-full px-4 py-3 text-slate-700  rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                focus:bg-white focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                 />
                 <PasswordShow isShow={isShow} setIsShow={setIsShow} />
                 {errors?.password && (
                   <span className="text-red-600 text-sm">
                     <small>{errors.password?.message}</small>
-                  </span>
-                )}
-              </div>
-              <div className="mt-4 relative">
-                <label className="block text-gray-700">Confirm Password</label>
-                <input
-                  {...register("confirm", {
-                    required: "This field is required",
-                    validate: (value) =>
-                      value === password || "Passwords do not match",
-                  })}
-                  type={`${isShow ? "text" : "password"}`}
-                  name="confirm"
-                  placeholder="Enter Confirm Password"
-                  className="w-full px-4 py-3 rounded-lg text-slate-700  bg-gray-200 mt-2 border focus:border-blue-500
-                focus:bg-white focus:outline-none"
-                />
-                <PasswordShow isShow={isShow} setIsShow={setIsShow} />
-                {errors?.confirm && (
-                  <span className="text-red-600 text-sm">
-                    <small>{errors.confirm?.message}</small>
                   </span>
                 )}
               </div>
@@ -188,8 +184,7 @@ const Register = () => {
 
               <button
                 type="submit"
-                className="w-full block primary-btn  focus: text-white font-semibold rounded-lg
-              px-4 py-3 mt-6"
+                className="w-full block primary-btn focus: text-white font-semibold rounded-lg px-4 py-3 mt-6"
               >
                 {loading ? <IconSpin /> : "Register"}
               </button>

@@ -19,13 +19,13 @@ const PopularInstructors = () => {
     <section className="mb-10">
       <SectionTitle
         subTitle="Limitless learning, more possibilities"
-        title="Popular Instructors"
+        title="Our Instructors"
         center={false}
       />
       {instructorLoading ? (
         <Spinner />
       ) : (
-        <div className="default-container px-6 md:px-0 grid-cols-1 md:grid-cols-2 grid gap-12">
+        <div className="default-container px-6 md:px-0 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3">
           {instructors?.length > 0 &&
             instructors.map((instructor) => (
               <InstructorCard

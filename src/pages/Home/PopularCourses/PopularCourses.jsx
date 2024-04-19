@@ -4,7 +4,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import axios from "axios";
 import Spinner from "../../../components/Spinner/Spinner";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAdmin from "../../../hooks/useAdmin";
@@ -30,6 +30,9 @@ const PopularCourses = () => {
     },
   });
 
+
+  console.log(popularCourses);
+
   // course card handle
   const handleCart = (courseInfo) => {
     setCardLoading(true);
@@ -54,16 +57,21 @@ const PopularCourses = () => {
 
   return (
     <section className="mb-20">
-      <SectionTitle
-        subTitle="Limitless learning, more possibilities"
-        title="Popular Course"
-        center={false}
-      />
+      <div className="mb-8 flex justify-between items-end default-container mt-10">
+        <div>
+        <p className=" text-[2rem] ">Exclusive Language Learning </p> <br />
+        <p className="text-[1.5rem] font-bold">Popular course</p>
+        </div>
+
+        <div>
+          <Link to={"/"} className="text-blue-600 font-bold text-lg px-6 py-2 border border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300">See More</Link>
+        </div>
+      </div>
       <div className="default-container">
         {isLoading ? (
           <Spinner />
         ) : (
-          <div className="default-container px-6 md:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid gap-12">
+          <div className="default-container px-6 md:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid gap-6">
             {popularCourses?.length > 0 &&
               popularCourses.map((course) => (
                 <CoursesCard
@@ -77,6 +85,7 @@ const PopularCourses = () => {
               ))}
           </div>
         )}
+        
       </div>
     </section>
   );
