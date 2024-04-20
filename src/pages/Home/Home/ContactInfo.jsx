@@ -7,7 +7,7 @@ const ContactInfo = () => {
           <div
             className='mt-12 flex flex-col lg:flex-row gap-6  w-full p-6 rounded-lg'
           >
-            <div className=" w-full bg-white text-black shadow-lg p-4">
+            <div className=" w-full bg-white rounded-xl text-black shadow-lg p-6">
               <h2 className="text-[2rem] font-semibold  mb-4">
                 Get in touch.
               </h2>
@@ -30,7 +30,7 @@ const ContactInfo = () => {
                 </li>
               </ul>
             </div>
-            <form className="w-full p-4 text-black bg-white shadow-lg">
+            <form className="w-full p-6 text-black bg-white rounded-xl shadow-lg">
               <div className="mb-4">
                 <label htmlFor="name" className="block  mb-2">
                   Your Name

@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import Spinner from "../components/Spinner/Spinner";
 
 const auth = getAuth(app);
 // context create
@@ -92,7 +93,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{loading ? <Spinner/> : children}</AuthContext.Provider>
   );
 };
 

@@ -160,7 +160,7 @@ const Header = () => {
                   <li>
                     <NavLink
                       to="/profile"
-                      className="">
+                      className={({ isActive }) => (isActive ? "text-primary" : "")}>
                       Profile
                     </NavLink>
                   </li>

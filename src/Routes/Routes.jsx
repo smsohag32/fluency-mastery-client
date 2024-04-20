@@ -21,6 +21,7 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import DashboardHome from "../pages/Dashboard/Student/DashboardHome";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import Profile from "../pages/Profile/Profile";
 
 // all routes
 const routes = createBrowserRouter([
@@ -56,6 +57,10 @@ const routes = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors />,
+      },
+      {
+        path: "/profile",
+        element: <PrivateRoute><Profile/></PrivateRoute>,
       },
     ],
   },

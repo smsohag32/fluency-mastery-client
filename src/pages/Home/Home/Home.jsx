@@ -8,6 +8,7 @@ import About from "./About/About";
 import { Helmet } from "react-helmet";
 import OfferBoard from "./OfferBoard/OfferBoard";
 import ContactInfo from "./ContactInfo";
+import WhyLearn from "./WhyLearn";
 const Home = () => {
   return (
     <div>
@@ -15,6 +16,7 @@ const Home = () => {
         <title> Home | Fluency</title>
       </Helmet>
       <HeaderBanner />
+      <WhyLearn/>
       <PopularCourses />
       <OfferBoard />
       <PopularInstructors />
