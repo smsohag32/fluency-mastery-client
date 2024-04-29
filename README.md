@@ -53,7 +53,3 @@ Visit the [FluencyMastery Live Website](https://fluencymastery-849ec.web.app/) t
 - MongoDB
 - React Hook Form
 - Other relevant React packages
-
-## Contributing
-
-Contributions are welcome! If you find any issues or have suggestions for improvements, please create a pull request.
